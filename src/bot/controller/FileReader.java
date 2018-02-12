@@ -7,7 +7,7 @@ public class FileReader
 	public static String readConfig()
 	{
 		String container = "";
-		String file = "Config.txt";
+		String file = "src/Config.txt";
 		try
 		{
 			Scanner scanFile = new Scanner(new File(file));
