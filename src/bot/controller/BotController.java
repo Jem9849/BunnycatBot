@@ -62,6 +62,8 @@ public class BotController
 		if (splitCommand[0].startsWith(prefix))
 		{
 			String preSubStr = splitCommand[0].substring(1);
+			
+			
 		}
 		
 		
