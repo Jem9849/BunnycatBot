@@ -22,6 +22,7 @@ public class BotController
 	{
 		System.out.println(bot.getApplicationClientID());
 		
+		// This registers the listener with eventdispatcher.
 		EventDispatcher dispatch = bot.getDispatcher();
 		dispatch.registerListener(new BotListener());
 	}
@@ -49,28 +50,5 @@ public class BotController
             return null;
         }
     }
-	
-	// This processes the command and turns it into something understandable.
-	public static void processCommand(IMessage message, String prefix)
-	{
-		IUser member = message.getAuthor();
-		IChannel textChan = message.getChannel();
-		IGuild server = message.getGuild();
-		
-		String[] splitCommand = message.getContent().split(" ");
-		
-		if (splitCommand[0].startsWith(prefix))
-		{
-			String preSubStr = splitCommand[0].substring(1);
-			
-			
-		}
-		
-		
-		
-		
-		
-	}
-	
 	
 }

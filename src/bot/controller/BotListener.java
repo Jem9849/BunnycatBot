@@ -1,5 +1,7 @@
 package bot.controller;
 
+import bot.model.CommandActions;
+
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 
@@ -16,7 +18,7 @@ public static String prefix = new String("/");
 	{
 		if (event.getMessage().getContent().toLowerCase().startsWith(prefix))
 		{
-			BotController.processCommand(event.getMessage(), prefix);
+			CommandActions.processCommand(event.getMessage(), prefix);
 		}
 	}
 }
