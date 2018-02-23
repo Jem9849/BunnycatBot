@@ -1,4 +1,4 @@
-package bot.model;
+package bot.controller;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -9,14 +9,14 @@ import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IUser;
 
-public class CommandActions 
+public class CommandControl 
 {
-	public CommandActions()
+	public CommandControl()
 	{
 		
 	}
 	
-	// This processes the command and turns it into something understandable.
+	// This processes the command.
 	public static void processCommand(IMessage message, String prefix)
 	{
 		IUser member = message.getAuthor();
@@ -25,11 +25,12 @@ public class CommandActions
 			
 		String[] splitCommand = message.getContent().split(" ");
 			
-		if (splitCommand[0].startsWith(prefix))
+		if (splitCommand.length > 0 && splitCommand[0].startsWith(prefix))
 		{
 			List<String> command = new ArrayList<String>(Arrays.asList(splitCommand));
 			command.remove(0);
 		}
+	
 	}
 		
 }

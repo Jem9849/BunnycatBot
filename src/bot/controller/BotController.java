@@ -17,18 +17,18 @@ public class BotController
 		
 	}
 	
-	// Where the program will come to after the runner.  
+	// Where we register the listener.  
 	void start()
 	{
 		System.out.println(bot.getApplicationClientID());
 		
-		// This registers the listener with eventdispatcher.
+		// This registers the listener with event dispatcher.
 		EventDispatcher dispatch = bot.getDispatcher();
 		dispatch.registerListener(new BotListener());
 	}
 	
 	
-	// This takes two parameters, token and logged. These are here to help set up the bot and login.
+	// This is used to create a client and give it the bot token. Then it trys to log in.
 	public static IDiscordClient createClient(String token, boolean logged)
     {
         ClientBuilder buildClient = new ClientBuilder();
