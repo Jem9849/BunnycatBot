@@ -1,5 +1,7 @@
 package bot.controller;
 
+import com.Cardinal.CommandPackage.CommandClient;
+
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.util.DiscordException;
@@ -20,11 +22,21 @@ public class BotController
 	// Where we register the listener.  
 	void start()
 	{
-		System.out.println(bot.getApplicationClientID());
+		CommandClient cC = new CommandClient(FileReader.readConfig());
+		cC.addListener(new BotListener("//"));
+		activateCommands();
+		
+		//System.out.println(bot.getApplicationClientID());
 		
 		// This registers the listener with event dispatcher.
-		EventDispatcher dispatch = bot.getDispatcher();
-		dispatch.registerListener(new BotListener());
+		//EventDispatcher dispatch = bot.getDispatcher();
+		//dispatch.registerListener(new BotListener());
+	}
+	
+	// Notices and activates commands, letting them be used and understood.
+	public static void activateCommands()
+	{
+		
 	}
 	
 	
