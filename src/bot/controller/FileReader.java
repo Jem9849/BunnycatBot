@@ -11,8 +11,9 @@ public class FileReader
 		try
 		{
 			Scanner scanFile = new Scanner(new File(file));
-				String row = scanFile.next(key);
-				row.replaceFirst(key, " ");
+				String row = scanFile.nextLine();
+				
+				//row.replaceFirst(key, " ");
 				container = row;
 				scanFile.close();
 		}
