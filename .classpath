@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="CommandPackage_1.0.jar"/>
 	<classpathentry kind="lib" path="Discord4j-2.9.3-shaded.jar"/>
+	<classpathentry kind="lib" path="google-api-services-customsearch-v1-rev60-1.23.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
