@@ -4,14 +4,15 @@ import java.util.Scanner;
 
 public class FileReader 
 {
-	public static String readConfig()
+	public static String readConfig(String key)
 	{
 		String container = "";
 		String file = "src/Config.txt";
 		try
 		{
 			Scanner scanFile = new Scanner(new File(file));
-				String row = scanFile.next();
+				String row = scanFile.next(key);
+				row.replaceFirst(key, " ");
 				container = row;
 				scanFile.close();
 		}

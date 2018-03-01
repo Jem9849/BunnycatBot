@@ -11,7 +11,7 @@ import sx.blah.discord.api.events.EventDispatcher;
 public class BotController 
 {
 	// A public static constant that has the password token, and having logged in being true.
-	public static final IDiscordClient bot = createClient(FileReader.readConfig(), true);
+	public static final IDiscordClient bot = createClient(FileReader.readConfig("BotId"), true);
 	
 	// The Constructor if needed.
 	public BotController()
@@ -22,7 +22,7 @@ public class BotController
 	// Where we register the listener.  
 	void start()
 	{
-		CommandClient cC = new CommandClient(FileReader.readConfig());
+		CommandClient cC = new CommandClient(FileReader.readConfig("BotId"));
 		cC.addListener(new BotListener("//"));
 		activateCommands();
 		
