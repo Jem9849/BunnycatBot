@@ -11,17 +11,30 @@ public class FileReader
 		try
 		{
 			Scanner scanFile = new Scanner(new File(file));
-				String row = scanFile.nextLine();
+			
+			//String row = scanFile.nextLine();
 				
-				//row.replaceFirst(key, " ");
-				container = row;
-				scanFile.close();
+				if (scanFile.hasNext(key))
+				{
+					String row = scanFile.nextLine();
+					row = scanFile.nextLine();
+					container = row;
+					
+					scanFile.close();
+				}
+				
+				else
+				{
+					scanFile.close();
+				}
+				//row.replaceFirst(key, " ");	
 		}
-		
+				
 		catch (FileNotFoundException error)
 		{
 			System.out.println("There was an error:" + error.getMessage());
 		}
+		
 			return container;
 	}
 }
