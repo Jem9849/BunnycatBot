@@ -1,7 +1,9 @@
 package bot.controller;
 
 import com.Cardinal.CommandPackage.CommandClient;
+import com.Cardinal.CommandPackage.Proccessor.CommandRegistry;
 
+import bot.model.RockPaperScissors;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.util.DiscordException;
@@ -36,7 +38,7 @@ public class BotController
 	// Notices and activates commands, letting them be used and understood.
 	public static void activateCommands()
 	{
-		
+		CommandRegistry.current().register(new RockPaperScissors()); 
 	}
 	
 	
