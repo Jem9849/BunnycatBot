@@ -16,13 +16,16 @@ public class RockPaperScissors implements ICommand {
 	{
 		String tempC = Arrays.toString(args);
 		
-		if (tempC == "rps")
+		if (tempC.length() >= 3 && tempC.contains("rps"))
 		{
-			
+			if (tempC == "rps")
+			{
+				
+			}
 		}
-		else if (tempC == "rps" + event.get)
+		else
 		{
-			
+			System.out.println("You did not enter arguments correctly. Either just say rpc or rpc <@user>.");
 		}
 	}
 		
