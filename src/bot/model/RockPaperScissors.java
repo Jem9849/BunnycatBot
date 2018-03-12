@@ -18,14 +18,21 @@ public class RockPaperScissors implements ICommand {
 		
 		if (tempC.length() >= 3 && tempC.contains("rps"))
 		{
-			if (tempC == "rps")
+			if (tempC.length() == 3)
+			{
+				
+			}
+			
+			else if (tempC.length() > 3)
 			{
 				
 			}
 		}
 		else
 		{
-			System.out.println("You did not enter arguments correctly. Either just say rpc or rpc <@user>.");
+			//System.out.println("You did not enter arguments correctly. Either just say rps or rps <@user>.");
+			throw new MissingArgumentsException(getName(), "You did not enter arguments correctly. "
+					+ "Either just say rps or rps <@user>.");
 		}
 	}
 		
@@ -40,7 +47,7 @@ public class RockPaperScissors implements ICommand {
 	public String getName() 
 	{
 		
-		return "rpc";
+		return "rps";
 	}
 
 }
