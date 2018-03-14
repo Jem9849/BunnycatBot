@@ -14,20 +14,20 @@ public class RockPaperScissors implements ICommand {
 	public void execute(MessageReceivedEvent event, String[] args)
 			throws MissingPermissionsException, MissingArgumentsException 
 	{
-		String temp = Arrays.toString(args);
-		temp.replaceFirst("//", "");
+			
+			//if (args.length == 3)	
 		
-			if (temp.length() == 3)
+			if (args[0].equals("rps"))
 			{
 				String [] choice = new String[] {"Rock", "Paper", "Scissors"};
 				boolean finished = false;
 				int random = 0;
+				event.getChannel().sendMessage("Enter either, rock, paper, or scissors.");
 				
-				while(finished)
+				while(finished == false)
 				{
 					random = (int) (Math.random() * 2);
-					event.getChannel().sendMessage("Enter either, rock, paper, or scissors.");
-					String message = event.getMessage().getContent().toLowerCase();
+					//String message = .getMessage().getContent();
 					
 					if (message == "rock" || message == "paper" || message == "scissors")
 					{
