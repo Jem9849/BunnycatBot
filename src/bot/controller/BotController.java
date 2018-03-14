@@ -38,7 +38,8 @@ public class BotController
 	// Notices and activates commands, letting them be used and understood.
 	public static void activateCommands()
 	{
-		CommandRegistry.current().register(new RockPaperScissors()); 
+		CommandRegistry.current().register(new RockPaperScissors());
+		//CommandRegistry.current().register(new Rock());
 	}
 	
 	
