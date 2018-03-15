@@ -36,19 +36,17 @@ public class RockPaperScissors implements ICommand {
 					
 					MessageHistory bulk = event.getChannel().getMessageHistory(50);
 					Iterator<IMessage> move = bulk.iterator();
-//					while (move.hasNext())
-//					{
-//						if (move.equals("rock") || move.equals("paper") || 
-//								move.equals("scissors"))
-//						{
-//							
-//						}
-//					}
-//					
-//					if (event.getChannel().getMessageHistory(50).contains(user.getLongID()) && )
-//					{
-//						
-//					}
+					while (move.hasNext())
+					{
+						IMessage msg = (IMessage)move.next();
+						String [] action = new String [3];
+						
+						if (msg.getAuthor() != user && msg.getContent().toLowerCase() != "rock" ||
+								msg.getContent().toLowerCase() != "paper" || msg.getContent().toLowerCase() != "scissors")
+						{
+							move.remove();
+						}
+					}
 					
 					if (args[0] == "rock" || args[0] == "paper" || args[0] == "scissors")
 					{
