@@ -1,12 +1,15 @@
 package bot.model;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 import com.Cardinal.CommandPackage.Commands.ICommand;
 import com.Cardinal.CommandPackage.Exceptions.MissingArgumentsException;
 
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
+import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IUser;
+import sx.blah.discord.util.MessageHistory;
 import sx.blah.discord.util.MissingPermissionsException;
 
 public class RockPaperScissors implements ICommand {
@@ -29,11 +32,23 @@ public class RockPaperScissors implements ICommand {
 				while(finished == false)
 				{
 					random = (int) (Math.random() * 2);
+					//messageBulk = event.getChannel().getMessageHistory(50);
 					
-					if (event.getChannel().getMessageHistory(50).contains(user.getLongID()))
-					{
-						
-					}
+					MessageHistory bulk = event.getChannel().getMessageHistory(50);
+					Iterator<IMessage> move = bulk.iterator();
+//					while (move.hasNext())
+//					{
+//						if (move.equals("rock") || move.equals("paper") || 
+//								move.equals("scissors"))
+//						{
+//							
+//						}
+//					}
+//					
+//					if (event.getChannel().getMessageHistory(50).contains(user.getLongID()) && )
+//					{
+//						
+//					}
 					
 					if (args[0] == "rock" || args[0] == "paper" || args[0] == "scissors")
 					{
