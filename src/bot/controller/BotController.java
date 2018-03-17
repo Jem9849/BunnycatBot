@@ -3,12 +3,15 @@ package bot.controller;
 import com.Cardinal.CommandPackage.CommandClient;
 import com.Cardinal.CommandPackage.Proccessor.CommandRegistry;
 
+import bot.model.Paper;
+import bot.model.Rock;
 import bot.model.RockPaperScissors;
+import bot.model.Scissors;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.util.DiscordException;
-import sx.blah.discord.handle.obj.*;
-import sx.blah.discord.api.events.EventDispatcher;
+//import sx.blah.discord.handle.obj.*;
+//import sx.blah.discord.api.events.EventDispatcher;
 
 public class BotController 
 {
@@ -39,7 +42,9 @@ public class BotController
 	public static void activateCommands()
 	{
 		CommandRegistry.current().register(new RockPaperScissors());
-		//CommandRegistry.current().register(new Rock());
+		CommandRegistry.current().register(new Rock());
+		CommandRegistry.current().register(new Paper());
+		CommandRegistry.current().register(new Scissors());
 	}
 	
 	
