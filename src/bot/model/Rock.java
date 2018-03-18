@@ -8,38 +8,43 @@ import sx.blah.discord.util.MissingPermissionsException;
 
 public class Rock implements ICommand 
 {
-	private boolean running;
 	RockPaperScissors control;
+	//private boolean running;
 	
 	public Rock()
 	{
-		this.control = new RockPaperScissors();
-		this.running = control.getRunning();
+		control = new RockPaperScissors();
 	}
 
 	@Override
 	public void execute(MessageReceivedEvent event, String[] args)
 			throws MissingPermissionsException, MissingArgumentsException 
-	{
+	{	
+		System.out.println("My value is, " + RockPaperScissors.running);
 		if (args[0].equals("rock"))
 		{
-			if (running == true)
+			if (RockPaperScissors.running == true)
 			{
-				if (control.randomChoice() == "rock")
+				if (control.randomChoice().equals("rock"))				
 				{
 					event.getChannel().sendMessage("You tied against the bot's rock.");
 				}
 				
-				else if (control.randomChoice() == "paper")
+				else if (control.randomChoice().equals("paper"))
 				{
 					event.getChannel().sendMessage("You lost against the bot's paper.");
-					control.setRunning(false);
+					RockPaperScissors.running = false;
 				}
 				
-				else if (control.randomChoice() == "scissors")
+				else if (control.randomChoice().equals("scissors"))
 				{
 					event.getChannel().sendMessage("You won against the bot's scissors.");
-					control.setRunning(false);
+					RockPaperScissors.running = false;
+				}
+				
+				else 
+				{
+					System.out.println(control.randomChoice());
 				}
 			}
 

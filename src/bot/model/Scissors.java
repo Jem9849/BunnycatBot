@@ -8,13 +8,12 @@ import sx.blah.discord.util.MissingPermissionsException;
 
 public class Scissors implements ICommand 
 {
-	private boolean running;
+	//private boolean running;
 	RockPaperScissors control;
 	
 	public Scissors()
 	{
-		this.control = new RockPaperScissors();
-		this.running = control.getRunning();
+		control = new RockPaperScissors();
 	}
 
 	@Override
@@ -23,18 +22,18 @@ public class Scissors implements ICommand
 	{
 		if (args[0].equals("scissors"))
 		{
-			if (running == true)
+			if (RockPaperScissors.running == true)
 			{
 				if (control.randomChoice() == "rock")
 				{
 					event.getChannel().sendMessage("You lost against the bot's scissors.");
-					control.setRunning(false);
+					RockPaperScissors.running = false;
 				}
 				
 				else if (control.randomChoice() == "paper")
 				{
 					event.getChannel().sendMessage("You won against the bot's paper.");
-					control.setRunning(false);
+					RockPaperScissors.running = false;
 				}
 				
 				else if (control.randomChoice() == "scissors")

@@ -3,6 +3,7 @@ package bot.model;
 //import java.util.Arrays;
 //import java.util.Iterator;
 //import java.util.concurrent.TimeUnit;
+//import bot.controller.BotController;
 
 import com.Cardinal.CommandPackage.Commands.ICommand;
 import com.Cardinal.CommandPackage.Exceptions.MissingArgumentsException;
@@ -15,15 +16,14 @@ import sx.blah.discord.util.MissingPermissionsException;
 
 public class RockPaperScissors implements ICommand 
 {
-	private boolean running;
+	public static boolean running;
 	private String [] choice;
 	private int random;
 	
 	public RockPaperScissors()
 	{
-		this.running = false;
-		this.choice = new String[] {"Rock", "Paper", "Scissors"};
-		this.random = 0;
+		choice = new String[] {"rock", "paper", "scissors"};
+		random = 0;
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class RockPaperScissors implements ICommand
 		
 			if (args[0].equals("rps"))
 			{
-				setRunning(true);
+				running = true;
 				event.getChannel().sendMessage("Choose either, //rock, //paper, or //scissors");
 			}
 			
@@ -51,16 +51,6 @@ public class RockPaperScissors implements ICommand
 		random = (int) (Math.random() * 2);
 		
 		return choice[random];
-	}
-	
-	public void setRunning(boolean running)
-	{
-		this.running = running;
-	}
-		
-	public boolean getRunning()
-	{
-		return running;
 	}
 
 	@Override
