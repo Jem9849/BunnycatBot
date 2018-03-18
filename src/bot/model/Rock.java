@@ -20,7 +20,7 @@ public class Rock implements ICommand
 	public void execute(MessageReceivedEvent event, String[] args)
 			throws MissingPermissionsException, MissingArgumentsException 
 	{	
-		System.out.println("My value is, " + RockPaperScissors.running);
+		//System.out.println("My value is, " + RockPaperScissors.running);
 		if (args[0].equals("rock"))
 		{
 			if (RockPaperScissors.running == true)
