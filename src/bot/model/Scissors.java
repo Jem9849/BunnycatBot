@@ -26,19 +26,19 @@ public class Scissors implements ICommand
 			{
 				if (control.randomChoice() == "rock")
 				{
-					event.getChannel().sendMessage("You lost against the bot's scissors.");
+					control.sendM("You lost against the bot's scissors.", event);
 					RockPaperScissors.running = false;
 				}
 				
 				else if (control.randomChoice() == "paper")
 				{
-					event.getChannel().sendMessage("You won against the bot's paper.");
+					control.sendM("You won against the bot's paper.", event);
 					RockPaperScissors.running = false;
 				}
 				
 				else if (control.randomChoice() == "scissors")
 				{
-					event.getChannel().sendMessage("You both tied, try again.");
+					control.sendM("You both tied, try again.", event);
 				}
 			}
 

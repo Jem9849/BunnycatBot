@@ -26,18 +26,18 @@ public class Paper implements ICommand
 			{
 				if (control.randomChoice() == "rock")
 				{
-					event.getChannel().sendMessage("You won against the bot's rock.");
+					control.sendM("You won against the bot's rock.", event);
 					RockPaperScissors.running = false;
 				}
 				
 				else if (control.randomChoice() == "paper")
 				{
-					event.getChannel().sendMessage("You tied against the bot's paper.");
+					control.sendM("You tied against the bot's paper.", event);
 				}
 				
 				else if (control.randomChoice() == "scissors")
 				{
-					event.getChannel().sendMessage("You lost against the bot's scissors.");
+					control.sendM("You lost against the bot's scissors.", event);
 					RockPaperScissors.running = false;
 				}
 			}

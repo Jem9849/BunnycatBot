@@ -27,18 +27,18 @@ public class Rock implements ICommand
 			{
 				if (control.randomChoice().equals("rock"))				
 				{
-					event.getChannel().sendMessage("You tied against the bot's rock.");
+					control.sendM("You tied against the bot's rock.", event); //("You tied against the bot's rock.");
 				}
 				
 				else if (control.randomChoice().equals("paper"))
 				{
-					event.getChannel().sendMessage("You lost against the bot's paper.");
+					control.sendM("You lost against the bot's paper.", event);
 					RockPaperScissors.running = false;
 				}
 				
 				else if (control.randomChoice().equals("scissors"))
 				{
-					event.getChannel().sendMessage("You won against the bot's scissors.");
+					control.sendM("You won against the bot's scissors.", event);
 					RockPaperScissors.running = false;
 				}
 				

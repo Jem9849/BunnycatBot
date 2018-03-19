@@ -9,6 +9,7 @@ import com.Cardinal.CommandPackage.Commands.ICommand;
 import com.Cardinal.CommandPackage.Exceptions.MissingArgumentsException;
 
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
+import sx.blah.discord.handle.obj.IMessage;
 //import sx.blah.discord.handle.obj.IMessage;
 //import sx.blah.discord.handle.obj.IUser;
 //import sx.blah.discord.util.MessageHistory;
@@ -34,7 +35,7 @@ public class RockPaperScissors implements ICommand
 			if (args[0].equals("rps"))
 			{
 				running = true;
-				event.getChannel().sendMessage("Choose either, //rock, //paper, or //scissors");
+				sendM("Choose either //rock, //paper, or //scissors.", event);
 			}
 			
 			else
@@ -51,6 +52,14 @@ public class RockPaperScissors implements ICommand
 		random = (int) (Math.random() * 2);
 		
 		return choice[random];
+	}
+	
+	public IMessage sendM(String message, MessageReceivedEvent event)
+	{
+		IMessage IM = event.getChannel().sendMessage(message);
+		
+		
+		return IM;
 	}
 
 	@Override
