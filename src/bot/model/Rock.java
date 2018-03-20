@@ -3,17 +3,20 @@ package bot.model;
 import com.Cardinal.CommandPackage.Commands.ICommand;
 import com.Cardinal.CommandPackage.Exceptions.MissingArgumentsException;
 
+import bot.controller.BotController;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.util.MissingPermissionsException;
 
 public class Rock implements ICommand 
 {
-	RockPaperScissors control;
+	RockPaperScissors gameControl;
+	BotController botControl;
 	//private boolean running;
 	
 	public Rock()
 	{
-		control = new RockPaperScissors();
+		botControl = new BotController();
+		gameControl = new RockPaperScissors();
 	}
 
 	@Override
@@ -25,27 +28,27 @@ public class Rock implements ICommand
 		{
 			if (RockPaperScissors.running == true)
 			{
-				if (control.randomChoice().equals("rock"))				
+				if (gameControl.randomChoice().equals("rock"))				
 				{
-					control.sendM("You tied against the bot's rock.", event); //("You tied against the bot's rock.");
+					botControl.messageBuild("You tied.", ":full_moon: vs :full_moon:", event);
 				}
 				
-				else if (control.randomChoice().equals("paper"))
+				else if (gameControl.randomChoice().equals("paper"))
 				{
-					control.sendM("You lost against the bot's paper.", event);
+					botControl.messageBuild("You lost!", ":full_moon: vs :newspaper:", event);
 					RockPaperScissors.running = false;
 				}
 				
-				else if (control.randomChoice().equals("scissors"))
+				else if (gameControl.randomChoice().equals("scissors"))
 				{
-					control.sendM("You won against the bot's scissors.", event);
+					botControl.messageBuild("You won!", ":full_moon: vs :scissors:", event);
 					RockPaperScissors.running = false;
 				}
 				
-				else 
-				{
-					System.out.println(control.randomChoice());
-				}
+//				else 
+//				{
+//					//System.out.println(gameControl.randomChoice());
+//				}
 			}
 
 		}

@@ -8,6 +8,7 @@ package bot.model;
 import com.Cardinal.CommandPackage.Commands.ICommand;
 import com.Cardinal.CommandPackage.Exceptions.MissingArgumentsException;
 
+import bot.controller.BotController;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.handle.obj.IMessage;
 //import sx.blah.discord.handle.obj.IMessage;
@@ -20,6 +21,7 @@ public class RockPaperScissors implements ICommand
 	public static boolean running;
 	private String [] choice;
 	private int random;
+	private BotController botControl;
 	
 	public RockPaperScissors()
 	{
@@ -35,7 +37,7 @@ public class RockPaperScissors implements ICommand
 			if (args[0].equals("rps"))
 			{
 				running = true;
-				sendM("Choose either //rock, //paper, or //scissors.", event);
+				botControl.messageBuild(getTitle(), "Choose either //rock, //paper, or //scissors.", event);
 			}
 			
 			else
@@ -54,13 +56,13 @@ public class RockPaperScissors implements ICommand
 		return choice[random];
 	}
 	
-	public IMessage sendM(String message, MessageReceivedEvent event)
-	{
-		IMessage IM = event.getChannel().sendMessage(message);
-		
-		
-		return IM;
-	}
+//	public IMessage sendM(String message, MessageReceivedEvent event)
+//	{
+//		IMessage IM = event.getChannel().sendMessage(message);
+//		
+//		
+//		return IM;
+//	}
 
 	@Override
 	public String getDescription() 
@@ -72,6 +74,11 @@ public class RockPaperScissors implements ICommand
 	public String getName() 
 	{
 		return "rps";
+	}
+	
+	public String getTitle()
+	{
+		return "Rock Paper Scissors";
 	}
 
 }

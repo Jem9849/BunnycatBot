@@ -7,8 +7,10 @@ import bot.model.Paper;
 import bot.model.Rock;
 import bot.model.RockPaperScissors;
 import bot.model.Scissors;
+import bot.view.SendMessage;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
+import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.util.DiscordException;
 //import sx.blah.discord.handle.obj.*;
 //import sx.blah.discord.api.events.EventDispatcher;
@@ -17,13 +19,15 @@ public class BotController
 {
 	// A public static constant that has the password token, and having logged in being true.
 	public static final IDiscordClient bot = createClient(FileReader.readConfig("BotId"), true);
+	private SendMessage messageHelp;
+	//private RockPaperScissors rps;
 	
 	//public static RockPaperScissors rps;
 	
 	// The Constructor if needed.
 	public BotController()
 	{
-		
+		messageHelp = new SendMessage();
 	}
 	
 	// Where we register the listener.  
@@ -73,5 +77,10 @@ public class BotController
             return null;
         }
     }
+	
+	public void messageBuild(String title, String content, MessageReceivedEvent event)
+	{
+		messageHelp.buildMessage(title, content, event);
+	}
 	
 }

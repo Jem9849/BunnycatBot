@@ -1,5 +1,7 @@
 package bot.model;
 
+import bot.controller.BotController;
+
 import com.Cardinal.CommandPackage.Commands.ICommand;
 import com.Cardinal.CommandPackage.Exceptions.MissingArgumentsException;
 
@@ -8,12 +10,14 @@ import sx.blah.discord.util.MissingPermissionsException;
 
 public class Paper implements ICommand 
 {
-	RockPaperScissors control;
+	RockPaperScissors gameControl;
+	BotController botControl;
 	//private boolean running;
 	
 	public Paper()
 	{
-		control = new RockPaperScissors();
+		gameControl = new RockPaperScissors();
+		botControl = new BotController();
 	}
 
 	@Override
@@ -24,20 +28,20 @@ public class Paper implements ICommand
 		{
 			if (RockPaperScissors.running == true)
 			{
-				if (control.randomChoice() == "rock")
+				if (gameControl.randomChoice() == "rock")
 				{
-					control.sendM("You won against the bot's rock.", event);
+					botControl.messageBuild("You won!", ":newspaper: vs :full_moon:", event);
 					RockPaperScissors.running = false;
 				}
 				
-				else if (control.randomChoice() == "paper")
+				else if (gameControl.randomChoice() == "paper")
 				{
-					control.sendM("You tied against the bot's paper.", event);
+					botControl.messageBuild("You tied.", ":newspaper: vs :newspaper:", event);
 				}
 				
-				else if (control.randomChoice() == "scissors")
+				else if (gameControl.randomChoice() == "scissors")
 				{
-					control.sendM("You lost against the bot's scissors.", event);
+					botControl.messageBuild("You lost!", ":scissors: vs :newspaper:", event);
 					RockPaperScissors.running = false;
 				}
 			}
