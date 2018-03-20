@@ -11,6 +11,7 @@ import bot.view.SendMessage;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
+import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.DiscordException;
 //import sx.blah.discord.handle.obj.*;
 //import sx.blah.discord.api.events.EventDispatcher;
@@ -20,13 +21,14 @@ public class BotController
 	// A public static constant that has the password token, and having logged in being true.
 	public static final IDiscordClient bot = createClient(FileReader.readConfig("BotId"), true);
 	private SendMessage messageHelp;
-	//private RockPaperScissors rps;
+	private RockPaperScissors gameRps;
 	
 	//public static RockPaperScissors rps;
 	
 	// The Constructor if needed.
 	public BotController()
 	{
+		//gameRps = new RockPaperScissors();
 		messageHelp = new SendMessage();
 	}
 	
@@ -48,10 +50,19 @@ public class BotController
 	// Notices and activates commands, letting them be used and understood.
 	public static void activateCommands()
 	{
-		CommandRegistry.current().register(new RockPaperScissors());
-		CommandRegistry.current().register(new Rock());
-		CommandRegistry.current().register(new Paper());
-		CommandRegistry.current().register(new Scissors());
+		try 
+		{
+			CommandRegistry.current().register(new RockPaperScissors());
+			CommandRegistry.current().register(new Rock());
+			CommandRegistry.current().register(new Paper());
+			CommandRegistry.current().register(new Scissors());
+		}
+		
+		catch (DiscordException event)
+		{
+			event.printStackTrace();
+		}
+		
 	}
 	
 	
@@ -78,9 +89,19 @@ public class BotController
         }
     }
 	
-	public void messageBuild(String title, String content, MessageReceivedEvent event)
+	public void messageEmbed(String title, String content, String appendContent, MessageReceivedEvent event)
 	{
-		messageHelp.buildMessage(title, content, event);
+		messageHelp.buildMessage(title, content, appendContent, event);
 	}
+	
+	public void messageSend(String content, MessageReceivedEvent event)
+	{
+		messageHelp.sendM(content, event);
+	}
+	
+//	public String getRpsTitle()
+//	{
+//		return gameRps.getTitle();
+//	}
 	
 }

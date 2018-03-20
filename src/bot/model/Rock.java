@@ -30,18 +30,21 @@ public class Rock implements ICommand
 			{
 				if (gameControl.randomChoice().equals("rock"))				
 				{
-					botControl.messageBuild("You tied.", ":full_moon: vs :full_moon:", event);
+					botControl.messageEmbed("You tied.", ":full_moon: vs :full_moon:", 
+							"Rock does not beat rock.", event);
 				}
 				
 				else if (gameControl.randomChoice().equals("paper"))
 				{
-					botControl.messageBuild("You lost!", ":full_moon: vs :newspaper:", event);
+					botControl.messageEmbed("You lost!", ":full_moon: vs :newspaper:", 
+							"No victory for poor choices. Rock does not beat paper.", event);
 					RockPaperScissors.running = false;
 				}
 				
 				else if (gameControl.randomChoice().equals("scissors"))
 				{
-					botControl.messageBuild("You won!", ":full_moon: vs :scissors:", event);
+					botControl.messageEmbed("You won!", ":full_moon: vs :scissors:", 
+							"Nicely one, smash those scissors.", event);
 					RockPaperScissors.running = false;
 				}
 				

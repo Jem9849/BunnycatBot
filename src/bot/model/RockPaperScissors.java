@@ -26,6 +26,7 @@ public class RockPaperScissors implements ICommand
 	public RockPaperScissors()
 	{
 		choice = new String[] {"rock", "paper", "scissors"};
+		botControl = new BotController();
 		random = 0;
 	}
 
@@ -37,7 +38,7 @@ public class RockPaperScissors implements ICommand
 			if (args[0].equals("rps"))
 			{
 				running = true;
-				botControl.messageBuild(getTitle(), "Choose either //rock, //paper, or //scissors.", event);
+				botControl.messageEmbed(getTitle(), "Choose either //rock, //paper, or //scissors.", "Decisions, decisions", event);
 			}
 			
 			else
@@ -55,14 +56,6 @@ public class RockPaperScissors implements ICommand
 		
 		return choice[random];
 	}
-	
-//	public IMessage sendM(String message, MessageReceivedEvent event)
-//	{
-//		IMessage IM = event.getChannel().sendMessage(message);
-//		
-//		
-//		return IM;
-//	}
 
 	@Override
 	public String getDescription() 

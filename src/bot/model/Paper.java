@@ -30,18 +30,21 @@ public class Paper implements ICommand
 			{
 				if (gameControl.randomChoice() == "rock")
 				{
-					botControl.messageBuild("You won!", ":newspaper: vs :full_moon:", event);
+					botControl.messageEmbed("You won!", ":newspaper: vs :full_moon:", 
+							"You beat them with paper.", event);
 					RockPaperScissors.running = false;
 				}
 				
 				else if (gameControl.randomChoice() == "paper")
 				{
-					botControl.messageBuild("You tied.", ":newspaper: vs :newspaper:", event);
+					botControl.messageEmbed("You tied.", ":newspaper: vs :newspaper:", 
+							"You can't beat paper with paper. Silly.", event);
 				}
 				
 				else if (gameControl.randomChoice() == "scissors")
 				{
-					botControl.messageBuild("You lost!", ":scissors: vs :newspaper:", event);
+					botControl.messageEmbed("You lost!", ":scissors: vs :newspaper:", 
+							"Nice try, bud. Paper does not beat scissors.", event);
 					RockPaperScissors.running = false;
 				}
 			}

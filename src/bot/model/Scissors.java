@@ -29,19 +29,22 @@ public class Scissors implements ICommand
 			{
 				if (gameControl.randomChoice() == "rock")
 				{
-					botControl.messageBuild("You lost!", ":scissors: vs :full_moon:", event);
+					botControl.messageEmbed("You lost!", ":scissors: vs :full_moon:", 
+							"Scissors against rock? BAD PLAY!", event);
 					RockPaperScissors.running = false;
 				}
 				
 				else if (gameControl.randomChoice() == "paper")
 				{
-					botControl.messageBuild("You won!", ":scissors: vs :newspaper:", event);
+					botControl.messageEmbed("You won!", ":scissors: vs :newspaper:", 
+							"You won, congrats. Cut that paper up.", event);
 					RockPaperScissors.running = false;
 				}
 				
 				else if (gameControl.randomChoice() == "scissors")
 				{
-					botControl.messageBuild("You tied.", ":scissors: vs :scissors:", event);
+					botControl.messageEmbed("You tied.", ":scissors: vs :scissors:", 
+							"Scissors.. against scissors... wow just wow.", event);
 				}
 			}
 
