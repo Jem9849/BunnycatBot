@@ -7,7 +7,7 @@ public class FileReader
 {
 	public static String readConfig(String key)
 	{
-		String container = "";
+		//String container = "";
 		ArrayList<String> fileArray = new ArrayList<String>();
 		String file = "src/Config.txt";
 		
@@ -30,16 +30,18 @@ public class FileReader
 			System.out.println("There was an error:" + error.getMessage());
 		}
 		
+//		if (fileArray.contains(key))
+//		{
+//			for (int i = 0; i < fileArray.size(); i++)
+//			{
+//				if (fileArray.get(i) == key)
+//				{
+//					container = fileArray.get(i++);
+//				}
+//			}
+//		}
 		
-		for (int i = 0; i < fileArray.size(); i++)
-		{
-			if (fileArray.get(i) == key)
-			{
-				container = fileArray.get(i++);
-			}
-		}
-		
-		return container;
+		return findKey(fileArray, key);
 			//String row = scanFile.nextLine();
 				
 //				if (scanFile.hasNext())
@@ -54,5 +56,19 @@ public class FileReader
 //					
 				
 				//row.replaceFirst(key, " ");	
+	}
+	
+	public static String findKey (ArrayList<String> keyList, String key)
+	{
+		String keyFound = "";
+		for (int i = 0; i < keyList.size(); i++)
+		{
+			if (keyList.get(i) == key)
+			{
+				keyFound = keyList.get(i++);
+			}
+		}
+		
+		return keyFound;
 	}
 }
