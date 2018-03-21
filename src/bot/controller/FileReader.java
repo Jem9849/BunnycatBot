@@ -63,9 +63,9 @@ public class FileReader
 		String keyFound = "";
 		for (int i = 0; i < keyList.size(); i++)
 		{
-			if (keyList.get(i) == key)
+			if (keyList.get(i).equals(key))
 			{
-				keyFound = keyList.get(i++);
+				keyFound = keyList.get(i + 1);
 			}
 		}
 		

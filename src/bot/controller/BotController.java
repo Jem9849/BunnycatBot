@@ -4,6 +4,7 @@ import com.Cardinal.CommandPackage.CommandClient;
 import com.Cardinal.CommandPackage.Proccessor.CommandRegistry;
 
 import bot.model.Paper;
+import bot.model.ReactionMe;
 import bot.model.Rock;
 import bot.model.RockPaperScissors;
 import bot.model.Scissors;
@@ -22,6 +23,7 @@ public class BotController
 	public static final IDiscordClient bot = createClient(FileReader.readConfig("BotId"), true);
 	private SendMessage messageHelp;
 	private RockPaperScissors gameRps;
+	private ReactionMe reaction;
 	
 	//public static RockPaperScissors rps;
 	
@@ -38,6 +40,8 @@ public class BotController
 		CommandClient cC = new CommandClient(FileReader.readConfig("BotId"));
 		cC.addListener(new BotListener("//"));
 		activateCommands();
+		reaction.giveMeReaction();
+		
 		//RockPaperScissors rps = new RockPaperScissors();
 		
 		//System.out.println(bot.getApplicationClientID());

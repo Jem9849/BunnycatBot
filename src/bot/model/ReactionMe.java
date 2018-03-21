@@ -1,6 +1,9 @@
 package bot.model;
 
 import java.util.Iterator;
+
+import com.Cardinal.CommandPackage.Commands.ICommand;
+
 import bot.controller.FileReader;
 
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
@@ -9,7 +12,7 @@ import sx.blah.discord.handle.impl.obj.ReactionEmoji;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.MessageHistory;
 
-public class ReactionMe 
+public class ReactionMe
 {
 	MessageHistory messageH;
 	Iterator<IMessage> IM;
