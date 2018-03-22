@@ -35,7 +35,7 @@ public class RockPaperScissors implements ICommand
 			throws MissingPermissionsException, MissingArgumentsException 
 	{
 		
-			if (args[0].equals("rps"))
+			if (args[0].equals("rps") && running != true)
 			{
 				running = true;
 				botControl.messageEmbed(getTitle(), "Choose either //rock, //paper, or //scissors.", "Decisions, decisions", event);
@@ -44,8 +44,8 @@ public class RockPaperScissors implements ICommand
 			else
 			{
 				//event.getChannel().sendMessage("You did not enter arguments correctly. Either just say rps or rps <@user>.");
-				throw new MissingArgumentsException(getName(), "You did not enter arguments correctly. "
-						+ "Say //rps.");
+				throw new MissingArgumentsException(getName(), "You did not enter arguments correctly. Or the game is already running "
+						+ "Say //rps. or use a choice of //rock, //paper, //scissors.");
 			}
 				
 		}
