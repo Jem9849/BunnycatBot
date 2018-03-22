@@ -4,10 +4,11 @@ import com.Cardinal.CommandPackage.CommandClient;
 import com.Cardinal.CommandPackage.Proccessor.CommandRegistry;
 
 import bot.model.Paper;
-import bot.model.ReactionMe;
+import bot.model.Reaction;
 import bot.model.Rock;
 import bot.model.RockPaperScissors;
 import bot.model.Scissors;
+import bot.model.updateUsername;
 import bot.view.SendMessage;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
@@ -22,8 +23,8 @@ public class BotController
 	// A public static constant that has the password token, and having logged in being true.
 	public static final IDiscordClient bot = createClient(FileReader.readConfig("BotId"), true);
 	private SendMessage messageHelp;
-	private RockPaperScissors gameRps;
-	private ReactionMe reaction;
+	//private RockPaperScissors gameRps;
+	//private ReactionMe reaction;
 	
 	//public static RockPaperScissors rps;
 	
@@ -40,7 +41,6 @@ public class BotController
 		CommandClient cC = new CommandClient(FileReader.readConfig("BotId"));
 		cC.addListener(new BotListener("//"));
 		activateCommands();
-		reaction.giveMeReaction();
 		
 		//RockPaperScissors rps = new RockPaperScissors();
 		
@@ -60,6 +60,8 @@ public class BotController
 			CommandRegistry.current().register(new Rock());
 			CommandRegistry.current().register(new Paper());
 			CommandRegistry.current().register(new Scissors());
+			CommandRegistry.current().register(new Reaction());
+			CommandRegistry.current().register(new updateUsername());
 		}
 		
 		catch (DiscordException event)
@@ -75,6 +77,7 @@ public class BotController
     {
         ClientBuilder buildClient = new ClientBuilder();
         buildClient.withToken(token);
+        buildClient.withRecommendedShardCount();
         try
         {
             if (logged)
@@ -93,6 +96,7 @@ public class BotController
         }
     }
 	
+	
 	public void messageEmbed(String title, String content, String appendContent, MessageReceivedEvent event)
 	{
 		messageHelp.buildMessage(title, content, appendContent, event);
@@ -101,6 +105,11 @@ public class BotController
 	public void messageSend(String content, MessageReceivedEvent event)
 	{
 		messageHelp.sendM(content, event);
+	}
+	
+	public static IDiscordClient getBot()
+	{
+		return bot;
 	}
 	
 //	public String getRpsTitle()
