@@ -5,6 +5,7 @@ import com.Cardinal.CommandPackage.Proccessor.CommandRegistry;
 
 import bot.model.Reaction;
 import bot.model.RockPaperScissors;
+import bot.model.Shield;
 import bot.model.updateUsername;
 import bot.view.SendMessage;
 import sx.blah.discord.api.ClientBuilder;
@@ -54,7 +55,7 @@ public class BotController
 		try 
 		{
 			CommandRegistry.current().register(new RockPaperScissors());
-			//CommandRegistry.current().register(new Rock());
+			CommandRegistry.current().register(new Shield());
 			//CommandRegistry.current().register(new Paper());
 			//CommandRegistry.current().register(new Scissors());
 			CommandRegistry.current().register(new Reaction());
@@ -109,10 +110,10 @@ public class BotController
 		System.out.println(error);
 	}
 	
-	public static IDiscordClient getBot()
-	{
-		return bot;
-	}
+//	public static IDiscordClient getBot()
+//	{
+//		return bot;
+//	}
 	
 //	public String getRpsTitle()
 //	{

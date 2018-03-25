@@ -4,58 +4,39 @@ import com.Cardinal.CommandPackage.Commands.ICommand;
 import com.Cardinal.CommandPackage.Exceptions.MissingArgumentsException;
 
 import bot.controller.BotController;
-import bot.controller.FileReader;
-import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.util.MissingPermissionsException;
 
-public class updateUsername implements ICommand 
+public class Shield implements ICommand 
 {
-	private String me;
-	private String newName;
 	private BotController botControl;
 	
-	public updateUsername()
+	public Shield()
 	{
-		me = FileReader.readConfig("DiscordId");
 		botControl = new BotController();
-		newName = "";
 	}
 
 	@Override
 	public void execute(MessageReceivedEvent event, String[] args)
 			throws MissingPermissionsException, MissingArgumentsException 
 	{
-		String compare = Long.toString(event.getAuthor().getLongID());
-		
-		if (compare.equals(me) && args.length >= 2)
+		if (args[0].equals("shield"))
 		{
-			newName = args[1];
-			
-			botControl.bot.changeUsername(newName);
+			botControl.messageSend("https://lh3.googleusercontent.com/-Cm5o99Hc_2k/WhnenIiMhVI/AAAAAAAAS-s/m3_x74TPDoQWgaHMRSAVdVfDTUYW6mrTACJoC/w506-h750/image%252520%252866%2529.jpg", event);
 		}
-		
-		else 
-		{
-			botControl.messageSend("You are either not Merciz, or you did not enter things correctly.", event);
-		}
-		
-		
-
 	}
 
 	@Override
 	public String getDescription() 
-	{
-		
-		return "Updates bot username.";
+	{	
+		return "Blocks everything with a single image.";
 	}
 
 	@Override
 	public String getName() 
 	{
 		
-		return "username";
+		return "shield";
 	}
 
 }

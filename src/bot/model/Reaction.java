@@ -28,23 +28,31 @@ public class Reaction implements ICommand
 	public void execute(MessageReceivedEvent event, String[] args)
 			throws MissingPermissionsException, MissingArgumentsException 
 	{
-		messageH = event.getChannel().getMessageHistory(9);
+		
 		String me = FileReader.readConfig("DiscordId");
 		
-		IM = messageH.iterator();
-		while (IM.hasNext())
+		if (Long.toString(event.getAuthor().getLongID()).equals(me))
 		{
-			for (IMessage current : messageH)
+			messageH = event.getChannel().getMessageHistory(3);
+			IM = messageH.iterator();
+			
+			while (IM.hasNext())
 			{
-				String authorCheck = Long.toString(current.getAuthor().getLongID());
-				
-				
-				if (authorCheck.equals(me))
+				for (IMessage current : messageH)
 				{
-					RequestBuffer.request(() -> current.addReaction(heartEmoji));
+					String authorCheck = Long.toString(current.getAuthor().getLongID());
+					
+					
+					if (authorCheck.equals(me))
+					{
+						RequestBuffer.request(() -> current.addReaction(heartEmoji));
+					}
 				}
 			}
 		}
+		
+		
+		
 
 	}
 

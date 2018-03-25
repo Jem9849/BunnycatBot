@@ -27,6 +27,7 @@ public class RockPaperScissors implements ICommand
 	public RockPaperScissors()
 	{
 		choice = new String[] {"rock", "paper", "scissors"};
+		botControl = new BotController();
 		random = 0;
 		gameEvent = "";
 	}
