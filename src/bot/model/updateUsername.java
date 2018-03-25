@@ -13,6 +13,7 @@ public class updateUsername implements ICommand
 {
 	private String me;
 	private String newName;
+	private BotController botControl;
 	
 	public updateUsername()
 	{
@@ -33,12 +34,10 @@ public class updateUsername implements ICommand
 			BotController.getBot().changeUsername(newName);
 		}
 		
-//		else
-//		{
-//			throw new MissingArgumentsException(getName(), "You did not enter arguments correctly. "
-//					+ "Say username (name)");
-//		}
-//		
+		else 
+		{
+			botControl.messageSend("You are either not Merciz, or you did not enter things correctly.", event);
+		}
 		
 		
 

@@ -3,11 +3,8 @@ package bot.controller;
 import com.Cardinal.CommandPackage.CommandClient;
 import com.Cardinal.CommandPackage.Proccessor.CommandRegistry;
 
-import bot.model.Paper;
 import bot.model.Reaction;
-import bot.model.Rock;
 import bot.model.RockPaperScissors;
-import bot.model.Scissors;
 import bot.model.updateUsername;
 import bot.view.SendMessage;
 import sx.blah.discord.api.ClientBuilder;
@@ -57,16 +54,16 @@ public class BotController
 		try 
 		{
 			CommandRegistry.current().register(new RockPaperScissors());
-			CommandRegistry.current().register(new Rock());
-			CommandRegistry.current().register(new Paper());
-			CommandRegistry.current().register(new Scissors());
+			//CommandRegistry.current().register(new Rock());
+			//CommandRegistry.current().register(new Paper());
+			//CommandRegistry.current().register(new Scissors());
 			CommandRegistry.current().register(new Reaction());
 			CommandRegistry.current().register(new updateUsername());
 		}
 		
 		catch (DiscordException event)
 		{
-			event.printStackTrace();
+			System.out.println("Someone entered a wrong command, or it didn't work." + event.getMessage());
 		}
 		
 	}
@@ -105,6 +102,11 @@ public class BotController
 	public void messageSend(String content, MessageReceivedEvent event)
 	{
 		messageHelp.sendM(content, event);
+	}
+	
+	public void printError(String error)
+	{
+		System.out.println(error);
 	}
 	
 	public static IDiscordClient getBot()

@@ -1,6 +1,7 @@
 package bot.view;
 
 import sx.blah.discord.util.EmbedBuilder;
+import sx.blah.discord.util.MissingPermissionsException;
 import sx.blah.discord.util.RequestBuffer;
 import bot.controller.BotController;
 //import sx.blah.discord.util.RequestBuffer.RequestFuture;
@@ -11,12 +12,11 @@ import sx.blah.discord.handle.obj.IMessage;
 public class SendMessage 
 {
 	private EmbedBuilder buildEm; 
-	//private BotController viewBotControl;
+	private BotController viewBotControl;
 	//private IMessage message;
 	
 	public SendMessage()
 	{
-		//viewBotControl = new BotController();
 		buildEm = new EmbedBuilder();
 	}
 	
@@ -31,8 +31,16 @@ public class SendMessage
 	    buildEm.withTitle(title);
 	    buildEm.withTimestamp(event.getMessage().getTimestamp());
 	    
+		try
+		{
+			RequestBuffer.request(() -> event.getChannel().sendMessage(buildEm.build()));
+		}
 		
-		RequestBuffer.request(() -> event.getChannel().sendMessage(buildEm.build()));
+		catch (MissingPermissionsException permission)
+		{
+			viewBotControl.printError(permission.getMessage());
+			sendM("The bot does not have the right permissions.", event);
+		}
 	}
 	
 	public IMessage sendM(String message, MessageReceivedEvent event)

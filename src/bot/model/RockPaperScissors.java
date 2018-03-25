@@ -22,12 +22,13 @@ public class RockPaperScissors implements ICommand
 	private String [] choice;
 	private int random;
 	private BotController botControl;
+	private String gameEvent;
 	
 	public RockPaperScissors()
 	{
 		choice = new String[] {"rock", "paper", "scissors"};
-		botControl = new BotController();
 		random = 0;
+		gameEvent = "";
 	}
 
 	@Override
@@ -35,20 +36,58 @@ public class RockPaperScissors implements ICommand
 			throws MissingPermissionsException, MissingArgumentsException 
 	{
 		
-			if (args[0].equals("rps") && running != true)
+			if (args[0].equals("rps") && args.length < 2)
 			{
-				running = true;
-				botControl.messageEmbed(getTitle(), "Choose either //rock, //paper, or //scissors.", "Decisions, decisions", event);
+				if (running == true)
+				{
+					botControl.messageEmbed(getTitle(), "The game is already running.", "", event);
+				}
+				
+				else
+				{
+					botControl.messageEmbed(getTitle(), "Choose either //rps rock, //rps paper, or //rps scissors.", "Decisions, decisions", event);
+					running = true;
+				}
+				
+				
+			}
+			
+			else if (args.length == 2 && running == true)
+			{
+				gameEvent = args[1].toLowerCase();
+				
+				while (running == true && !(gameEvent.isEmpty()))
+				{
+					switch (gameEvent)
+					{
+						case "rock":
+							rock(event);
+							break;
+				
+						case "paper":
+							paper(event);
+							break;
+				
+						case "scissors":
+							scissors(event);
+							break;
+				
+						default:
+							System.out.println("Something broke.");
+							break;
+					}
+				}
 			}
 			
 			else
 			{
 				//event.getChannel().sendMessage("You did not enter arguments correctly. Either just say rps or rps <@user>.");
-				throw new MissingArgumentsException(getName(), "You did not enter arguments correctly. Or the game is already running "
-						+ "Say //rps. or use a choice of //rock, //paper, //scissors.");
+				//throw new MissingArgumentsException(getName() + "You must say //rps or //rps <choice>");
+				botControl.messageSend("You must say //rps or //rps <choice>.", event);
 			}
 				
-		}
+	}
+	
 	
 	public String randomChoice()
 	{
@@ -56,6 +95,85 @@ public class RockPaperScissors implements ICommand
 		
 		return choice[random];
 	}
+	
+	public void rock(MessageReceivedEvent event)
+	{
+		String choice = randomChoice();
+		if (choice.equals("rock"))
+		{
+			botControl.messageEmbed("You tied.", ":full_moon: vs :full_moon:", 
+					"Rock does not beat rock.", event);
+			gameEvent = "";
+		}
+		
+		else if (choice.equals("paper"))
+		{
+			botControl.messageEmbed("You lost!", ":full_moon: vs :newspaper:", 
+					"No victory for poor choices. Rock does not beat paper.", event);
+			RockPaperScissors.running = false;
+		}
+		
+		else if (choice.equals("scissors"))
+		{
+			botControl.messageEmbed("You won!", ":full_moon: vs :scissors:", 
+					"Nicely done, smash those scissors.", event);
+			RockPaperScissors.running = false;
+		}
+	}
+	
+	public void paper(MessageReceivedEvent event)
+	{
+		String choice = randomChoice();
+		
+		if (choice.equals("rock"))
+		{
+			botControl.messageEmbed("You won!", ":newspaper: vs :full_moon:", 
+					"You beat them with paper.", event);
+			RockPaperScissors.running = false;
+		}
+		
+		else if (choice.equals("paper"))
+		{
+			botControl.messageEmbed("You tied.", ":newspaper: vs :newspaper:", 
+					"You can't beat paper with paper. Silly.", event);
+			gameEvent = "";
+		}
+		
+		else if (choice.equals("scissors"))
+		{
+			botControl.messageEmbed("You lost!", ":scissors: vs :newspaper:", 
+					"Nice try, bud. Paper does not beat scissors.", event);
+			RockPaperScissors.running = false;
+		}
+	}
+	
+	public void scissors(MessageReceivedEvent event)
+	{
+		String choice = randomChoice();
+		
+		if (choice.equals("rock"))
+		{
+			botControl.messageEmbed("You lost!", ":scissors: vs :full_moon:", 
+					"Scissors against rock? BAD PLAY!", event);
+			RockPaperScissors.running = false;
+		}
+		
+		else if (choice.equals("paper"))
+		{
+			botControl.messageEmbed("You won!", ":scissors: vs :newspaper:", 
+					"You won, congrats. Cut that paper up.", event);
+			RockPaperScissors.running = false;
+		}
+		
+		else if (choice.equals("scissors"))
+		{
+			botControl.messageEmbed("You tied.", ":scissors: vs :scissors:", 
+					"Scissors.. against scissors... wow just wow.", event);
+			gameEvent = "";
+		}
+	}
+	
+	
 
 	@Override
 	public String getDescription() 
