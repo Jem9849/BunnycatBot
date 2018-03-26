@@ -20,6 +20,7 @@ public class SendMessage
 		buildEm = new EmbedBuilder();
 	}
 	
+	//startAbstraction
 	public void buildMessage(String title, String content, String appendContent, MessageReceivedEvent event)
 	{	
 		//buildEm.appendField(":thinking: Hmm :thinking:", appendContent, true);
@@ -42,6 +43,7 @@ public class SendMessage
 			sendM("The bot does not have the right permissions.", event);
 		}
 	}
+	//endAbstraction
 	
 	public IMessage sendM(String message, MessageReceivedEvent event)
 	{

@@ -36,7 +36,7 @@ public class RockPaperScissors implements ICommand
 	public void execute(MessageReceivedEvent event, String[] args)
 			throws MissingPermissionsException, MissingArgumentsException 
 	{
-		
+		//startComplexity
 			if (args[0].equals("rps") && args.length < 2)
 			{
 				if (running == true)
@@ -86,6 +86,8 @@ public class RockPaperScissors implements ICommand
 				//throw new MissingArgumentsException(getName() + "You must say //rps or //rps <choice>");
 				botControl.messageSend("You must say //rps or //rps <choice>.", event);
 			}
+			
+			//endComplexity
 				
 	}
 	
