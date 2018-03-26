@@ -90,31 +90,30 @@ public class RockPaperScissors implements ICommand
 	}
 	
 	
-	public String randomChoice()
+	public int randomChoice()
 	{
 		random = (int) (Math.random() * 2);
 		
-		return choice[random];
+		return random;
 	}
 	
 	public void rock(MessageReceivedEvent event)
 	{
-		String choice = randomChoice();
-		if (choice.equals("rock"))
+		if (choice[randomChoice()].equals("rock"))
 		{
 			botControl.messageEmbed("You tied.", ":full_moon: vs :full_moon:", 
 					"Rock does not beat rock.", event);
 			gameEvent = "";
 		}
 		
-		else if (choice.equals("paper"))
+		else if (choice[randomChoice()].equals("paper"))
 		{
 			botControl.messageEmbed("You lost!", ":full_moon: vs :newspaper:", 
 					"No victory for poor choices. Rock does not beat paper.", event);
 			RockPaperScissors.running = false;
 		}
 		
-		else if (choice.equals("scissors"))
+		else if (choice[randomChoice()].equals("scissors"))
 		{
 			botControl.messageEmbed("You won!", ":full_moon: vs :scissors:", 
 					"Nicely done, smash those scissors.", event);
@@ -124,23 +123,22 @@ public class RockPaperScissors implements ICommand
 	
 	public void paper(MessageReceivedEvent event)
 	{
-		String choice = randomChoice();
 		
-		if (choice.equals("rock"))
+		if (choice[randomChoice()].equals("rock"))
 		{
 			botControl.messageEmbed("You won!", ":newspaper: vs :full_moon:", 
 					"You beat them with paper.", event);
 			RockPaperScissors.running = false;
 		}
 		
-		else if (choice.equals("paper"))
+		else if (choice[randomChoice()].equals("paper"))
 		{
 			botControl.messageEmbed("You tied.", ":newspaper: vs :newspaper:", 
 					"You can't beat paper with paper. Silly.", event);
 			gameEvent = "";
 		}
 		
-		else if (choice.equals("scissors"))
+		else if (choice[randomChoice()].equals("scissors"))
 		{
 			botControl.messageEmbed("You lost!", ":scissors: vs :newspaper:", 
 					"Nice try, bud. Paper does not beat scissors.", event);
@@ -150,23 +148,22 @@ public class RockPaperScissors implements ICommand
 	
 	public void scissors(MessageReceivedEvent event)
 	{
-		String choice = randomChoice();
 		
-		if (choice.equals("rock"))
+		if (choice[randomChoice()].equals("rock"))
 		{
 			botControl.messageEmbed("You lost!", ":scissors: vs :full_moon:", 
 					"Scissors against rock? BAD PLAY!", event);
 			RockPaperScissors.running = false;
 		}
 		
-		else if (choice.equals("paper"))
+		else if (choice[randomChoice()].equals("paper"))
 		{
 			botControl.messageEmbed("You won!", ":scissors: vs :newspaper:", 
 					"You won, congrats. Cut that paper up.", event);
 			RockPaperScissors.running = false;
 		}
 		
-		else if (choice.equals("scissors"))
+		else if (choice[randomChoice()].equals("scissors"))
 		{
 			botControl.messageEmbed("You tied.", ":scissors: vs :scissors:", 
 					"Scissors.. against scissors... wow just wow.", event);
