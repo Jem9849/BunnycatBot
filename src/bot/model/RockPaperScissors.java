@@ -1,5 +1,7 @@
 package bot.model;
 
+import java.awt.Color;
+
 //import java.util.Arrays;
 //import java.util.Iterator;
 //import java.util.concurrent.TimeUnit;
@@ -19,6 +21,8 @@ import sx.blah.discord.util.MissingPermissionsException;
 
 public class RockPaperScissors implements ICommand 
 {
+	private Color red;
+	private Color blue;
 	private EmbedBuilder embedRPS;
 	public static boolean running;
 	private String [] choice;
@@ -28,7 +32,9 @@ public class RockPaperScissors implements ICommand
 	
 	public RockPaperScissors()
 	{
-		embedRps = new EmbedBuilder();
+		red = Color.RED;
+		blue = Color.blue;
+		embedRPS = new EmbedBuilder();
 		choice = new String[] {"rock", "paper", "scissors"};
 		botControl = new BotController();
 		random = 0;
@@ -44,12 +50,12 @@ public class RockPaperScissors implements ICommand
 			{
 				if (running == true)
 				{
-					botControl.messageEmbed(getTitle(), "The game is already running.", "", event);
+					buildRPS(getTitle(), "The game is already running.", "Choose an action.", red, event);
 				}
 				
 				else
 				{
-					botControl.messageEmbed(getTitle(), "Choose either //rps rock, //rps paper, or //rps scissors.", "Decisions, decisions", event);
+					buildRPS(getTitle(), "Choose either //rps rock, //rps paper, or //rps scissors.", "Decisions, decisions", blue, event);
 					running = true;
 				}
 				
@@ -106,22 +112,22 @@ public class RockPaperScissors implements ICommand
 	{
 		if (choice[randomChoice()].equals("rock"))
 		{
-			botControl.messageEmbed("You tied.", ":full_moon: vs :full_moon:", 
-					"Rock does not beat rock.", event);
+			buildRPS("You tied.", ":full_moon: vs :full_moon:", 
+					"Rock does not beat rock.", red, event);
 			gameEvent = "";
 		}
 		
 		else if (choice[randomChoice()].equals("paper"))
 		{
-			botControl.messageEmbed("You lost!", ":full_moon: vs :newspaper:", 
-					"No victory for poor choices. Rock does not beat paper.", event);
+			buildRPS("You lost!", ":full_moon: vs :newspaper:", 
+					"No victory for poor choices. Rock does not beat paper.", red, event);
 			RockPaperScissors.running = false;
 		}
 		
 		else if (choice[randomChoice()].equals("scissors"))
 		{
-			botControl.messageEmbed("You won!", ":full_moon: vs :scissors:", 
-					"Nicely done, smash those scissors.", event);
+			buildRPS("You won!", ":full_moon: vs :scissors:", 
+					"Nicely done, smash those scissors.", blue, event);
 			RockPaperScissors.running = false;
 		}
 	}
@@ -131,22 +137,22 @@ public class RockPaperScissors implements ICommand
 		
 		if (choice[randomChoice()].equals("rock"))
 		{
-			botControl.messageEmbed("You won!", ":newspaper: vs :full_moon:", 
-					"You beat them with paper.", event);
+			buildRPS("You won!", ":newspaper: vs :full_moon:", 
+					"You beat them with paper.", blue, event);
 			RockPaperScissors.running = false;
 		}
 		
 		else if (choice[randomChoice()].equals("paper"))
 		{
-			botControl.messageEmbed("You tied.", ":newspaper: vs :newspaper:", 
-					"You can't beat paper with paper. Silly.", event);
+			buildRPS("You tied.", ":newspaper: vs :newspaper:", 
+					"You can't beat paper with paper. Silly.", red, event);
 			gameEvent = "";
 		}
 		
 		else if (choice[randomChoice()].equals("scissors"))
 		{
-			botControl.messageEmbed("You lost!", ":scissors: vs :newspaper:", 
-					"Nice try, bud. Paper does not beat scissors.", event);
+			buildRPS("You lost!", ":scissors: vs :newspaper:", 
+					"Nice try, bud. Paper does not beat scissors.", red, event);
 			RockPaperScissors.running = false;
 		}
 	}
@@ -156,22 +162,22 @@ public class RockPaperScissors implements ICommand
 		
 		if (choice[randomChoice()].equals("rock"))
 		{
-			botControl.messageEmbed("You lost!", ":scissors: vs :full_moon:", 
-					"Scissors against rock? BAD PLAY!", event);
+			buildRPS("You lost!", ":scissors: vs :full_moon:", 
+					"Scissors against rock? BAD PLAY!", red, event);
 			RockPaperScissors.running = false;
 		}
 		
 		else if (choice[randomChoice()].equals("paper"))
 		{
-			botControl.messageEmbed("You won!", ":scissors: vs :newspaper:", 
-					"You won, congrats. Cut that paper up.", event);
+			buildRPS("You won!", ":scissors: vs :newspaper:", 
+					"You won, congrats. Cut that paper up.", blue, event);
 			RockPaperScissors.running = false;
 		}
 		
 		else if (choice[randomChoice()].equals("scissors"))
 		{
-			botControl.messageEmbed("You tied.", ":scissors: vs :scissors:", 
-					"Scissors.. against scissors... wow just wow.", event);
+			buildRPS("You tied.", ":scissors: vs :scissors:", 
+					"Scissors.. against scissors... wow just wow.", red, event);
 			gameEvent = "";
 		}
 	}
@@ -195,9 +201,13 @@ public class RockPaperScissors implements ICommand
 		return "Rock Paper Scissors";
 	}
 	
-	public void buildRPS(String desc)
+	public void buildRPS(String title, String content, String desc, Color colour, MessageReceivedEvent event)
 	{
 		embedRPS.appendDesc(desc);
+		embedRPS.withColor(colour);
+		embedRPS.appendField(title, content, true); 
+		
+		botControl.messageEmbed(embedRPS, event);
 	}
 
 }
