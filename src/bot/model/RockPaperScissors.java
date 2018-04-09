@@ -14,10 +14,12 @@ import sx.blah.discord.handle.obj.IMessage;
 //import sx.blah.discord.handle.obj.IMessage;
 //import sx.blah.discord.handle.obj.IUser;
 //import sx.blah.discord.util.MessageHistory;
+import sx.blah.discord.util.EmbedBuilder;
 import sx.blah.discord.util.MissingPermissionsException;
 
 public class RockPaperScissors implements ICommand 
 {
+	private EmbedBuilder embedRPS;
 	public static boolean running;
 	private String [] choice;
 	private int random;
@@ -26,6 +28,7 @@ public class RockPaperScissors implements ICommand
 	
 	public RockPaperScissors()
 	{
+		embedRps = new EmbedBuilder();
 		choice = new String[] {"rock", "paper", "scissors"};
 		botControl = new BotController();
 		random = 0;
@@ -190,6 +193,11 @@ public class RockPaperScissors implements ICommand
 	public String getTitle()
 	{
 		return "Rock Paper Scissors";
+	}
+	
+	public void buildRPS(String desc)
+	{
+		embedRPS.appendDesc(desc);
 	}
 
 }

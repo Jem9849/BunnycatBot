@@ -13,6 +13,7 @@ import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.DiscordException;
+import sx.blah.discord.util.EmbedBuilder;
 //import sx.blah.discord.handle.obj.*;
 //import sx.blah.discord.api.events.EventDispatcher;
 
@@ -95,9 +96,9 @@ public class BotController
     }
 	
 	
-	public void messageEmbed(String title, String content, String appendContent, MessageReceivedEvent event)
+	public void messageEmbed(EmbedBuilder build, MessageReceivedEvent event)
 	{
-		messageHelp.buildMessage(title, content, appendContent, event);
+		messageHelp.buildMessage(build, event);
 	}
 	
 	public void messageSend(String content, MessageReceivedEvent event)
