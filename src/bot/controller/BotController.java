@@ -20,7 +20,7 @@ import sx.blah.discord.util.EmbedBuilder;
 public class BotController 
 {
 	// A public static constant that has the password token, and having logged in being true.
-	public static final IDiscordClient bot = createClient(FileReader.readConfig("BotId"), true);
+	public static final IDiscordClient bot = createClient(FileReader.readConfig("BotId", "config"), true);
 	private SendMessage messageHelp;
 	//private RockPaperScissors gameRps;
 	//private ReactionMe reaction;
@@ -37,7 +37,7 @@ public class BotController
 	// Where we register the listener.  
 	void start()
 	{
-		CommandClient cC = new CommandClient(FileReader.readConfig("BotId"));
+		CommandClient cC = new CommandClient(FileReader.readConfig("BotId", "config"));
 		cC.addListener(new BotListener("//"));
 		activateCommands();
 		

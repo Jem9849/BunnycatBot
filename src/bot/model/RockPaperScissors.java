@@ -203,9 +203,11 @@ public class RockPaperScissors implements ICommand
 	
 	public void buildRPS(String title, String content, String desc, Color colour, MessageReceivedEvent event)
 	{
-		embedRPS.appendDesc(desc);
+		embedRPS.clearFields();
+		
+		embedRPS.withDesc(desc);
 		embedRPS.withColor(colour);
-		embedRPS.appendField(title, content, true); 
+		embedRPS.appendField(title, content, true);
 		
 		botControl.messageEmbed(embedRPS, event);
 	}

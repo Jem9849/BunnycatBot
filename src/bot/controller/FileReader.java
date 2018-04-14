@@ -5,15 +5,25 @@ import java.util.Scanner;
 
 public class FileReader 
 {
-	public static String readConfig(String key)
+	public static String readConfig(String key, String file)
 	{
 		//String container = "";
 		ArrayList<String> fileArray = new ArrayList<String>();
-		String file = "src/Config.txt";
+		String files = "";
+		
+		if (file.toLowerCase() == "config")
+		{
+			files = "src/Config.txt";
+		}
+		
+		else if (file.toLowerCase() == "properties")
+		{
+			files = "src/Properties.txt";
+		}
 		
 		try
 		{
-			Scanner scanFile = new Scanner(new File(file));
+			Scanner scanFile = new Scanner(new File(files));
 
 			while (scanFile.hasNext())
 			{

@@ -17,7 +17,7 @@ public class updateUsername implements ICommand
 	
 	public updateUsername()
 	{
-		me = FileReader.readConfig("DiscordId");
+		me = FileReader.readConfig("DiscordId", "config");
 		botControl = new BotController();
 		newName = "";
 	}

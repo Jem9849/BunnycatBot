@@ -29,7 +29,7 @@ public class Reaction implements ICommand
 			throws MissingPermissionsException, MissingArgumentsException 
 	{
 		
-		String me = FileReader.readConfig("DiscordId");
+		String me = FileReader.readConfig("DiscordId", "config");
 		
 		if (Long.toString(event.getAuthor().getLongID()).equals(me))
 		{
