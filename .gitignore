@@ -4,6 +4,7 @@ bin/
 .DS_Store
 Thumbs.db
 Config.txt
+Properties.txt
 # Log file
 *.log
 
