@@ -1,6 +1,6 @@
 package bot.model;
 
-import java.awt.Color;
+//import java.awt.Color;
 
 //import java.util.Arrays;
 //import java.util.Iterator;
@@ -12,18 +12,18 @@ import com.Cardinal.CommandPackage.Exceptions.MissingArgumentsException;
 
 import bot.controller.BotController;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
-import sx.blah.discord.handle.obj.IMessage;
+//import sx.blah.discord.handle.obj.IMessage;
 //import sx.blah.discord.handle.obj.IMessage;
 //import sx.blah.discord.handle.obj.IUser;
 //import sx.blah.discord.util.MessageHistory;
-import sx.blah.discord.util.EmbedBuilder;
+//import sx.blah.discord.util.EmbedBuilder;
 import sx.blah.discord.util.MissingPermissionsException;
 
 public class RockPaperScissors implements ICommand 
 {
-	private Color red;
-	private Color blue;
-	private EmbedBuilder embedRPS;
+	//private Color red;
+	//private Color blue;
+	//private EmbedBuilder embedRPS;
 	public static boolean running;
 	private String [] choice;
 	private int random;
@@ -32,9 +32,9 @@ public class RockPaperScissors implements ICommand
 	
 	public RockPaperScissors()
 	{
-		red = Color.RED;
-		blue = Color.blue;
-		embedRPS = new EmbedBuilder();
+		//red = Color.RED;
+		//blue = Color.blue;
+		///embedRPS = new EmbedBuilder();
 		choice = new String[] {"rock", "paper", "scissors"};
 		botControl = new BotController();
 		random = 0;
@@ -50,12 +50,12 @@ public class RockPaperScissors implements ICommand
 			{
 				if (running == true)
 				{
-					buildRPS(getTitle(), "The game is already running.", "Choose an action.", red, event);
+					botControl.messageSend("The game is already running.", event);
 				}
 				
 				else
 				{
-					buildRPS(getTitle(), "Choose either //rps rock, //rps paper, or //rps scissors.", "Decisions, decisions", blue, event);
+					botControl.messageSend("Choose either //rps rock, //rps paper, or //rps scissors.", event);
 					running = true;
 				}
 				
@@ -112,22 +112,19 @@ public class RockPaperScissors implements ICommand
 	{
 		if (choice[randomChoice()].equals("rock"))
 		{
-			buildRPS("You tied.", ":full_moon: vs :full_moon:", 
-					"Rock does not beat rock.", red, event);
+			botControl.messageSend("You tied. :full_moon: vs :full_moon: Rock does not beat rock.", event);
 			gameEvent = "";
 		}
 		
 		else if (choice[randomChoice()].equals("paper"))
 		{
-			buildRPS("You lost!", ":full_moon: vs :newspaper:", 
-					"No victory for poor choices. Rock does not beat paper.", red, event);
+			botControl.messageSend("You lost. :full_moon vs :newspaper: Rock does not beat paper.", event);
 			RockPaperScissors.running = false;
 		}
 		
 		else if (choice[randomChoice()].equals("scissors"))
 		{
-			buildRPS("You won!", ":full_moon: vs :scissors:", 
-					"Nicely done, smash those scissors.", blue, event);
+			botControl.messageSend("You won. :full_moon: vs :scissors: Nicely done, smash those scissors.", event);
 			RockPaperScissors.running = false;
 		}
 	}
@@ -137,22 +134,19 @@ public class RockPaperScissors implements ICommand
 		
 		if (choice[randomChoice()].equals("rock"))
 		{
-			buildRPS("You won!", ":newspaper: vs :full_moon:", 
-					"You beat them with paper.", blue, event);
+			botControl.messageSend("You won. :newspaper: vs :full_moon: You beat them with paper.", event);
 			RockPaperScissors.running = false;
 		}
 		
 		else if (choice[randomChoice()].equals("paper"))
 		{
-			buildRPS("You tied.", ":newspaper: vs :newspaper:", 
-					"You can't beat paper with paper. Silly.", red, event);
+			botControl.messageSend("You tied. :newspaper: vs :newspaper: You can't beat paper with paper.", event);
 			gameEvent = "";
 		}
 		
 		else if (choice[randomChoice()].equals("scissors"))
 		{
-			buildRPS("You lost!", ":scissors: vs :newspaper:", 
-					"Nice try, bud. Paper does not beat scissors.", red, event);
+			botControl.messageSend("You lost. :newspaper: :scissors: Nice try bud. Paper does not beat scissors.", event);
 			RockPaperScissors.running = false;
 		}
 	}
@@ -162,22 +156,19 @@ public class RockPaperScissors implements ICommand
 		
 		if (choice[randomChoice()].equals("rock"))
 		{
-			buildRPS("You lost!", ":scissors: vs :full_moon:", 
-					"Scissors against rock? BAD PLAY!", red, event);
+			botControl.messageSend("You lost. :scissors: vs :full_moon: Scissors against rock? Oh no...", event);
 			RockPaperScissors.running = false;
 		}
 		
 		else if (choice[randomChoice()].equals("paper"))
 		{
-			buildRPS("You won!", ":scissors: vs :newspaper:", 
-					"You won, congrats. Cut that paper up.", blue, event);
+			botControl.messageSend("You won. :scissors: vs :newspaper: Congrats, you cut it.", event);
 			RockPaperScissors.running = false;
 		}
 		
 		else if (choice[randomChoice()].equals("scissors"))
 		{
-			buildRPS("You tied.", ":scissors: vs :scissors:", 
-					"Scissors.. against scissors... wow just wow.", red, event);
+			botControl.messageSend("You tied. :scissors: vs :scissors: Sadly, scissors hitting scissors sounds terrible.", event);
 			gameEvent = "";
 		}
 	}
@@ -196,20 +187,20 @@ public class RockPaperScissors implements ICommand
 		return "rps";
 	}
 	
-	public String getTitle()
-	{
-		return "Rock Paper Scissors";
-	}
+//	public String getTitle()
+//	{
+//		return "Rock Paper Scissors";
+//	}
 	
-	public void buildRPS(String title, String content, String desc, Color colour, MessageReceivedEvent event)
-	{
-		embedRPS.clearFields();
-		
-		embedRPS.withDesc(desc);
-		embedRPS.withColor(colour);
-		embedRPS.appendField(title, content, true);
-		
-		botControl.messageEmbed(embedRPS, event);
-	}
+//	public void buildRPS(String title, String content, String desc, Color colour, MessageReceivedEvent event)
+//	{
+//		embedRPS.clearFields();
+//		
+//		embedRPS.withDesc(desc);
+//		embedRPS.withColor(colour);
+//		embedRPS.appendField(title, content, true);
+//		
+//		botControl.messageEmbed(embedRPS, event);
+//	}
 
 }

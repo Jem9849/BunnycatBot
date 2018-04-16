@@ -5,7 +5,7 @@ import com.Cardinal.CommandPackage.Exceptions.MissingArgumentsException;
 
 import bot.controller.BotController;
 import bot.controller.FileReader;
-import sx.blah.discord.api.IDiscordClient;
+//import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.util.MissingPermissionsException;
 
@@ -32,7 +32,7 @@ public class updateUsername implements ICommand
 		{
 			newName = args[1];
 			
-			botControl.bot.changeUsername(newName);
+			BotController.bot.changeUsername(newName);
 		}
 		
 		else 

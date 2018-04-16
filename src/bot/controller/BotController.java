@@ -11,7 +11,7 @@ import bot.view.SendMessage;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
-import sx.blah.discord.handle.obj.IMessage;
+//import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.DiscordException;
 import sx.blah.discord.util.EmbedBuilder;
 //import sx.blah.discord.handle.obj.*;
@@ -62,7 +62,7 @@ public class BotController
 			CommandRegistry.current().register(new Reaction());
 			CommandRegistry.current().register(new updateUsername());
 		}
-		
+		// Catches the possibility of there being no command or things going wrong.
 		catch (DiscordException event)
 		{
 			System.out.println("Someone entered a wrong command, or it didn't work." + event.getMessage());
@@ -95,17 +95,19 @@ public class BotController
         }
     }
 	
+	// Used to build embedded messages.
+//	public void messageEmbed(EmbedBuilder build, MessageReceivedEvent event)
+//	{
+//		messageHelp.buildMessage(build, event);
+//	}
 	
-	public void messageEmbed(EmbedBuilder build, MessageReceivedEvent event)
-	{
-		messageHelp.buildMessage(build, event);
-	}
-	
+	// Used to send regular messages. 
 	public void messageSend(String content, MessageReceivedEvent event)
 	{
 		messageHelp.sendM(content, event);
 	}
 	
+	// Used to print out regular errors. 
 	public void printError(String error)
 	{
 		System.out.println(error);
