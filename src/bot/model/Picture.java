@@ -43,7 +43,10 @@ public class Picture implements ICommand
 	@Override
 	public String getDescription() 
 	{	
-		return "Blocks everything with a single image.";
+		return 	"**" + getName().toUpperCase() + "**" 
+				+ "\n" + "This command posts some hardcoded images." 
+				+ "\n" + "There is only one image so far called \"shield\"."
+				+ "\n" + "To use it say, \"//picture (image)\". ";
 	}
 
 	@Override

@@ -178,7 +178,10 @@ public class RockPaperScissors implements ICommand
 	@Override
 	public String getDescription() 
 	{
-		return "Play rock, paper, and scissors. Say rps to just play with the bot.";
+		return 	"**" + getName().toUpperCase() + "**"
+				+ "\n" + "This command lets you play rock, paper, scissors with the bot. To use this command"
+				+ "\n" + "you must say \"//rps\" then afterwards you may either choose \"//rps rock\", "
+				+ "\n" + "\"//rps paper\", or \"//rps rock\" till the game ends.";
 	}
 
 	@Override
