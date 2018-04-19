@@ -112,8 +112,9 @@ public class BotController
 	{
 		try
 		{
-		messageHelp.sendM(content, event);
+			messageHelp.sendM(content, event);
 		}
+		
 		catch (RateLimitException e)
 		{
 			System.out.println("RATE LIMIT EXCEEDED.");

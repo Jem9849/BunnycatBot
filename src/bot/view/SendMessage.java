@@ -36,16 +36,8 @@ public class SendMessage
 	
 	public IMessage sendM(String message, MessageReceivedEvent event)
 	{
-		try
-		{
-			IMessage IM = event.getChannel().sendMessage(message);
-			
-			return IM;
-		}
-		catch (RateLimitException e)
-		{
-			System.out.println("RATE LIMIT EXCEEDED.");
-			throw e;
-		}
+		IMessage IM = event.getChannel().sendMessage(message);
+		
+		return IM;
 	}
 }
