@@ -18,6 +18,7 @@ import sx.blah.discord.util.EmbedBuilder;
 //import sx.blah.discord.handle.obj.*;
 //import sx.blah.discord.api.events.EventDispatcher;
 import sx.blah.discord.util.RateLimitException;
+import sx.blah.discord.util.RequestBuffer;
 
 // The code uses two apis and also has a google api that isn't used yet. These two apis are from 
 // https://github.com/Discord4J/Discord4J and
@@ -110,16 +111,7 @@ public class BotController
 	// Used to send regular messages. 
 	public void messageSend(String content, MessageReceivedEvent event)
 	{
-		try
-		{
-			messageHelp.sendM(content, event);
-		}
-		
-		catch (RateLimitException e)
-		{
-			System.out.println("RATE LIMIT EXCEEDED.");
-			throw e;
-		}
+			RequestBuffer.request(() -> messageHelp.sendM(content, event));
 	}
 	
 	// Used to print out regular errors. 
