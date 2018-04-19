@@ -47,8 +47,5 @@ public class SendMessage
 			System.out.println("RATE LIMIT EXCEEDED.");
 			throw e;
 		}
-		
-		
-		
 	}
 }
