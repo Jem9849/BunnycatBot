@@ -5,6 +5,7 @@ import com.Cardinal.CommandPackage.Proccessor.CommandRegistry;
 
 import bot.model.Reaction;
 import bot.model.RockPaperScissors;
+import bot.model.Help;
 import bot.model.Picture;
 import bot.model.updateUsername;
 import bot.view.SendMessage;
@@ -61,7 +62,7 @@ public class BotController
 		{
 			CommandRegistry.current().register(new RockPaperScissors());
 			CommandRegistry.current().register(new Picture());
-			//CommandRegistry.current().register(new Paper());
+			CommandRegistry.current().register(new Help());
 			//CommandRegistry.current().register(new Scissors());
 			CommandRegistry.current().register(new Reaction());
 			CommandRegistry.current().register(new updateUsername());
