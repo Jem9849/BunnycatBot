@@ -118,7 +118,7 @@ public class RockPaperScissors implements ICommand
 		
 		else if (choice[randomChoice()].equals("paper"))
 		{
-			botControl.messageSend("You lost. :full_moon vs :newspaper: " + "\n" + "Rock does not beat paper.", event);
+			botControl.messageSend("You lost. :full_moon: vs :newspaper: " + "\n" + "Rock does not beat paper.", event);
 			RockPaperScissors.running = false;
 		}
 		
