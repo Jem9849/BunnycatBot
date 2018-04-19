@@ -17,6 +17,10 @@ import sx.blah.discord.util.EmbedBuilder;
 //import sx.blah.discord.handle.obj.*;
 //import sx.blah.discord.api.events.EventDispatcher;
 
+// The code uses two apis and also has a google api that isn't used yet. These two apis are from 
+// https://github.com/Discord4J/Discord4J and
+// https://github.com/TheCardinalSystem/DiscordPackages/tree/master/CommandPackage
+
 public class BotController 
 {
 	// A public static constant that has the password token, and having logged in being true.
