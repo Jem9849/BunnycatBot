@@ -5,6 +5,7 @@ import com.Cardinal.CommandPackage.Proccessor.CommandRegistry;
 
 import bot.model.Reaction;
 import bot.model.RockPaperScissors;
+import bot.model.CSPExplain;
 import bot.model.Help;
 import bot.model.Picture;
 import bot.model.updateUsername;
@@ -14,10 +15,10 @@ import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 //import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.DiscordException;
-import sx.blah.discord.util.EmbedBuilder;
+//import sx.blah.discord.util.EmbedBuilder;
 //import sx.blah.discord.handle.obj.*;
 //import sx.blah.discord.api.events.EventDispatcher;
-import sx.blah.discord.util.RateLimitException;
+//import sx.blah.discord.util.RateLimitException;
 import sx.blah.discord.util.RequestBuffer;
 
 // The code uses two apis and also has a google api that isn't used yet. These two apis are from 
@@ -65,7 +66,7 @@ public class BotController
 			CommandRegistry.current().register(new RockPaperScissors());
 			CommandRegistry.current().register(new Picture());
 			CommandRegistry.current().register(new Help());
-			//CommandRegistry.current().register(new Scissors());
+			CommandRegistry.current().register(new CSPExplain());
 			CommandRegistry.current().register(new Reaction());
 			CommandRegistry.current().register(new updateUsername());
 		}

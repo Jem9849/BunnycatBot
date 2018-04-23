@@ -9,6 +9,7 @@ import bot.controller.FileReader;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.util.MissingPermissionsException;
 
+// Used to update my bot's username.
 public class updateUsername implements ICommand 
 {
 	private String me;
@@ -26,6 +27,8 @@ public class updateUsername implements ICommand
 	public void execute(MessageReceivedEvent event, String[] args)
 			throws MissingPermissionsException, MissingArgumentsException 
 	{
+		// This makes sure that I am the one asking for the username change, else it prints a message telling the user the
+		// parameters.
 		String compare = Long.toString(event.getAuthor().getLongID());
 		
 		if (compare.equals(me) && args.length >= 2)

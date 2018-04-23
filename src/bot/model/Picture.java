@@ -7,6 +7,8 @@ import bot.controller.BotController;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.util.MissingPermissionsException;
 
+
+// This class sends a link to a photo.
 public class Picture implements ICommand 
 {
 	private BotController botControl;

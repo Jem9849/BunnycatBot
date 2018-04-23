@@ -9,6 +9,8 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 import sx.blah.discord.util.MissingPermissionsException;
 import sx.blah.discord.util.RateLimitException;
 
+
+// This class is suppose to print out help messages for USER commands.
 public class Help implements ICommand 
 {
 	private BotController botControl;
