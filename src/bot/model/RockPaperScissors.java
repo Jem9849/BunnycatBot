@@ -19,6 +19,7 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 //import sx.blah.discord.util.EmbedBuilder;
 import sx.blah.discord.util.MissingPermissionsException;
 
+// This class lets the user play rock, paper, scissors with the bot.
 public class RockPaperScissors implements ICommand 
 {
 	//private Color red;

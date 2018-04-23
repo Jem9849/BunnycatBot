@@ -10,6 +10,7 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 //import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IMessage;
 
+// This class is used to send messages.
 public class SendMessage 
 {
 	private BotController viewBotControl;
