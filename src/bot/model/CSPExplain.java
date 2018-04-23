@@ -23,7 +23,7 @@ public class CSPExplain implements ICommand
 	{
 		if (args[0].toLowerCase().equals("csp"))
 		{
-				botControl.messageSend("This is a discord bot that is suppose to do many things like play games,"
+				botControl.messageSend("This is a discord bot written in Java that is suppose to do many things like play games,"
 						+ " posts pictures, and post reactions. Today I'm going to show one of the games."
 						+ " This is the rock, paper, scissors command. It has the bot play this game with you."
 						+ " It works by using the prefix \"//\" prefix with the command rps. After the initial command,"
