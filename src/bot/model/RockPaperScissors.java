@@ -25,7 +25,7 @@ public class RockPaperScissors implements ICommand
 	//private Color red;
 	//private Color blue;
 	//private EmbedBuilder embedRPS;
-	public static boolean running;
+	public boolean running;
 	private String [] choice;
 	private int random;
 	private BotController botControl;
@@ -120,13 +120,13 @@ public class RockPaperScissors implements ICommand
 		else if (choice[randomChoice()].equals("paper"))
 		{
 			botControl.messageSend("You lost. :full_moon: vs :newspaper: " + "\n" + "Rock does not beat paper.", event);
-			RockPaperScissors.running = false;
+			running = false;
 		}
 		
 		else if (choice[randomChoice()].equals("scissors"))
 		{
 			botControl.messageSend("You won. :full_moon: vs :scissors: " + "\n" + "Nicely done, smash those scissors.", event);
-			RockPaperScissors.running = false;
+			running = false;
 		}
 	}
 	
@@ -136,7 +136,7 @@ public class RockPaperScissors implements ICommand
 		if (choice[randomChoice()].equals("rock"))
 		{
 			botControl.messageSend("You won. :newspaper: vs :full_moon: " + "\n" + "You beat them with paper.", event);
-			RockPaperScissors.running = false;
+			running = false;
 		}
 		
 		else if (choice[randomChoice()].equals("paper"))
@@ -148,7 +148,7 @@ public class RockPaperScissors implements ICommand
 		else if (choice[randomChoice()].equals("scissors"))
 		{
 			botControl.messageSend("You lost. :newspaper: :scissors: " + "\n" + "Nice try bud. Paper does not beat scissors.", event);
-			RockPaperScissors.running = false;
+			running = false;
 		}
 	}
 	
@@ -158,13 +158,13 @@ public class RockPaperScissors implements ICommand
 		if (choice[randomChoice()].equals("rock"))
 		{
 			botControl.messageSend("You lost. :scissors: vs :full_moon: " + "\n" + "Scissors against rock? Oh no...", event);
-			RockPaperScissors.running = false;
+			running = false;
 		}
 		
 		else if (choice[randomChoice()].equals("paper"))
 		{
 			botControl.messageSend("You won. :scissors: vs :newspaper: " + "\n" + "Congrats, you cut it.", event);
-			RockPaperScissors.running = false;
+			running = false;
 		}
 		
 		else if (choice[randomChoice()].equals("scissors"))
