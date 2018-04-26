@@ -1,30 +1,15 @@
 package bot.model;
 
-//import java.awt.Color;
-
-//import java.util.Arrays;
-//import java.util.Iterator;
-//import java.util.concurrent.TimeUnit;
-//import bot.controller.BotController;
-
 import com.Cardinal.CommandPackage.Commands.ICommand;
 import com.Cardinal.CommandPackage.Exceptions.MissingArgumentsException;
 
 import bot.controller.BotController;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
-//import sx.blah.discord.handle.obj.IMessage;
-//import sx.blah.discord.handle.obj.IMessage;
-//import sx.blah.discord.handle.obj.IUser;
-//import sx.blah.discord.util.MessageHistory;
-//import sx.blah.discord.util.EmbedBuilder;
 import sx.blah.discord.util.MissingPermissionsException;
 
 // This class lets the user play rock, paper, scissors with the bot.
 public class RockPaperScissors implements ICommand 
 {
-	//private Color red;
-	//private Color blue;
-	//private EmbedBuilder embedRPS;
 	public boolean running;
 	private String [] choice;
 	private int random;
@@ -33,20 +18,17 @@ public class RockPaperScissors implements ICommand
 	
 	public RockPaperScissors()
 	{
-		//red = Color.RED;
-		//blue = Color.blue;
-		///embedRPS = new EmbedBuilder();
 		choice = new String[] {"rock", "paper", "scissors"};
 		botControl = new BotController();
 		random = 0;
 		gameEvent = "";
 	}
 
+	//startComplexity
 	@Override
 	public void execute(MessageReceivedEvent event, String[] args)
 			throws MissingPermissionsException, MissingArgumentsException 
 	{
-		//startComplexity
 			if (args[0].equals("rps") && args.length < 2)
 			{
 				if (running == true)
@@ -92,8 +74,6 @@ public class RockPaperScissors implements ICommand
 			
 			else
 			{
-				//event.getChannel().sendMessage("You did not enter arguments correctly. Either just say rps or rps <@user>.");
-				//throw new MissingArgumentsException(getName() + "You must say //rps or //rps <choice>");
 				botControl.messageSend("You must say //rps or //rps <choice>.", event);
 			}
 			
@@ -190,21 +170,5 @@ public class RockPaperScissors implements ICommand
 	{
 		return "rps";
 	}
-	
-//	public String getTitle()
-//	{
-//		return "Rock Paper Scissors";
-//	}
-	
-//	public void buildRPS(String title, String content, String desc, Color colour, MessageReceivedEvent event)
-//	{
-//		embedRPS.clearFields();
-//		
-//		embedRPS.withDesc(desc);
-//		embedRPS.withColor(colour);
-//		embedRPS.appendField(title, content, true);
-//		
-//		botControl.messageEmbed(embedRPS, event);
-//	}
 
 }

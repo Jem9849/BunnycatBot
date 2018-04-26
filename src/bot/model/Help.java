@@ -4,10 +4,8 @@ import com.Cardinal.CommandPackage.Commands.ICommand;
 import com.Cardinal.CommandPackage.Exceptions.MissingArgumentsException;
 
 import bot.controller.BotController;
-import bot.model.*;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.util.MissingPermissionsException;
-import sx.blah.discord.util.RateLimitException;
 
 
 // This class is suppose to print out help messages for USER commands.
@@ -15,17 +13,13 @@ public class Help implements ICommand
 {
 	private BotController botControl;
 	private Picture pic;
-	private Reaction react;
 	private RockPaperScissors rps;
-	private updateUsername update;
 	
 	public Help()
 	{
 		pic = new Picture();
 		botControl = new BotController();
-		react = new Reaction();
 		rps = new RockPaperScissors();
-		update = new updateUsername();
 	}
 
 	@Override

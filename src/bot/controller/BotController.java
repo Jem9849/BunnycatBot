@@ -30,15 +30,10 @@ public class BotController
 	// A public static constant that has the password token, and having logged in being true.
 	public static final IDiscordClient bot = createClient(FileReader.readConfig("BotId", "config"), true);
 	private SendMessage messageHelp;
-	//private RockPaperScissors gameRps;
-	//private ReactionMe reaction;
-	
-	//public static RockPaperScissors rps;
 	
 	// The Constructor if needed.
 	public BotController()
 	{
-		//gameRps = new RockPaperScissors();
 		messageHelp = new SendMessage();
 	}
 	
@@ -48,14 +43,6 @@ public class BotController
 		CommandClient cC = new CommandClient(FileReader.readConfig("BotId", "config"));
 		cC.addListener(new BotListener("//"));
 		activateCommands();
-		
-		//RockPaperScissors rps = new RockPaperScissors();
-		
-		//System.out.println(bot.getApplicationClientID());
-		
-		// This registers the listener with event dispatcher.
-		//EventDispatcher dispatch = bot.getDispatcher();
-		//dispatch.registerListener(new BotListener());
 	}
 	
 	// Notices and activates commands, letting them be used and understood.
@@ -98,16 +85,10 @@ public class BotController
         }
         catch (DiscordException event)
         {
-            event.printStackTrace();
+            System.out.println("Unable to log in, or build the client.");
             return null;
         }
     }
-	
-	// Used to build embedded messages.
-//	public void messageEmbed(EmbedBuilder build, MessageReceivedEvent event)
-//	{
-//		messageHelp.buildMessage(build, event);
-//	}
 	
 	// Used to send regular messages. 
 	public void messageSend(String content, MessageReceivedEvent event)
@@ -120,15 +101,4 @@ public class BotController
 	{
 		System.out.println(error);
 	}
-	
-//	public static IDiscordClient getBot()
-//	{
-//		return bot;
-//	}
-	
-//	public String getRpsTitle()
-//	{
-//		return gameRps.getTitle();
-//	}
-	
 }

@@ -49,31 +49,6 @@ public class FileReader
 		
 		// Returns the key by calling a method to find the key.
 		return findKey(fileArray, key);
-		
-//		if (fileArray.contains(key))
-//		{
-//			for (int i = 0; i < fileArray.size(); i++)
-//			{
-//				if (fileArray.get(i) == key)
-//				{
-//					container = fileArray.get(i++);
-//				}
-//			}
-//		}
-			//String row = scanFile.nextLine();
-		
-//				if (scanFile.hasNext())
-//				{
-//					for (String current : fileArray)
-//					{
-//						
-//					}
-//					String row = scanFile.nextLine();
-//					row = scanFile.nextLine();
-//					container = row;
-//					
-				
-				//row.replaceFirst(key, " ");	
 	}
 	
 	// This goes through the array of strings and tries to find the key, and then it goes one up and gets the actual key.
