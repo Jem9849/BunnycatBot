@@ -24,6 +24,7 @@ import sx.blah.discord.util.RequestBuffer;
 // The code uses two apis and also has a google api that isn't used yet. These two apis are from 
 // https://github.com/Discord4J/Discord4J and
 // https://github.com/TheCardinalSystem/DiscordPackages/tree/master/CommandPackage
+// While the google api is from https://developers.google.com/api-client-library/java/apis/customsearch/v1
 
 public class BotController 
 {
