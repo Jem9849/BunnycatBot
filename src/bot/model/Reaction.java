@@ -26,7 +26,6 @@ public class Reaction implements ICommand
 
 	@Override
 	public void execute(MessageReceivedEvent event, String[] args)
-			throws MissingPermissionsException, MissingArgumentsException 
 	{
 		
 		String me = FileReader.readConfig("DiscordId", "config");

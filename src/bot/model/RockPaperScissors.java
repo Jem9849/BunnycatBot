@@ -27,7 +27,6 @@ public class RockPaperScissors implements ICommand
 	//startComplexity
 	@Override
 	public void execute(MessageReceivedEvent event, String[] args)
-			throws MissingPermissionsException, MissingArgumentsException 
 	{
 			if (args[0].equals("rps") && args.length < 2)
 			{

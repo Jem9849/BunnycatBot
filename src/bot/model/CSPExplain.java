@@ -19,7 +19,6 @@ public class CSPExplain implements ICommand
 
 	@Override
 	public void execute(MessageReceivedEvent event, String[] args)
-			throws MissingPermissionsException, MissingArgumentsException 
 	{
 		if (args[0].toLowerCase().equals("csp"))
 		{

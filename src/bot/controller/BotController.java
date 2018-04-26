@@ -13,12 +13,7 @@ import bot.view.SendMessage;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
-//import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.DiscordException;
-//import sx.blah.discord.util.EmbedBuilder;
-//import sx.blah.discord.handle.obj.*;
-//import sx.blah.discord.api.events.EventDispatcher;
-//import sx.blah.discord.util.RateLimitException;
 import sx.blah.discord.util.RequestBuffer;
 
 // The code has three libraries. One being a google api that isn't used and might never be. These two api libraries are from 

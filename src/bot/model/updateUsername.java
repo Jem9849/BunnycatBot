@@ -5,7 +5,6 @@ import com.Cardinal.CommandPackage.Exceptions.MissingArgumentsException;
 
 import bot.controller.BotController;
 import bot.controller.FileReader;
-//import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.util.MissingPermissionsException;
 
@@ -25,7 +24,6 @@ public class updateUsername implements ICommand
 
 	@Override
 	public void execute(MessageReceivedEvent event, String[] args)
-			throws MissingPermissionsException, MissingArgumentsException 
 	{
 		// This makes sure that I am the one asking for the username change, else it prints a message telling the user the
 		// parameters.
@@ -40,7 +38,7 @@ public class updateUsername implements ICommand
 		
 		else 
 		{
-			botControl.messageSend("You are either not Merciz, or you did not enter things correctly.", event);
+			botControl.messageSend("You are either not the Owner, or you did not enter things correctly.", event);
 		}
 		
 		
