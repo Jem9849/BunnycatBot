@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//startAbstraction
 public class FileReader 
 {
 	// Method used for reading a file and looking for a specific key.
@@ -66,3 +67,4 @@ public class FileReader
 		return keyFound;
 	}
 }
+//endAbstraction
