@@ -26,7 +26,8 @@ public class CSPExplain implements ICommand
 						+ " posts pictures, and post reactions. Today I'm going to show one of the games."
 						+ " This is the rock, paper, scissors command. It has the bot play this game with you."
 						+ " It works by using the prefix \"//\" prefix with the command rps. After the initial command,"
-						+ " you would say the command and a action with the prefix.", event);
+						+ " you would say the command and a action with the prefix. After each command a message is displayed"
+						+ " that either tells you what to do, or tells you what just happened.", event);
 		}
 
 	}
