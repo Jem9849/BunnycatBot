@@ -25,8 +25,8 @@ public class CSPExplain implements ICommand
 				botControl.messageSend("This is a discord bot written in Java that is suppose to do many things like play games,"
 						+ " posts pictures, and post reactions. Today I'm going to show one of the games."
 						+ " This is the rock, paper, scissors command. It has the bot play this game with you."
-						+ " It works by using the prefix \"//\" prefix with the command rps. After the initial command,"
-						+ " you would say the command and a action with the prefix. After each command a message is displayed"
+						+ " It works by using the prefix \"//\" with the command rps. After the initial command,"
+						+ " you would say the command and a action with the prefix. After each command, a message is displayed"
 						+ " that either tells you what to do, or tells you what just happened.", event);
 		}
 

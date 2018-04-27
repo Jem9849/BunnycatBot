@@ -41,6 +41,7 @@ public class BotController
 		activateCommands();
 	}
 	
+	
 	// Notices and activates commands, letting them be used and understood.
 	public static void activateCommands()
 	{
