@@ -3,11 +3,13 @@ package bot.model;
 import com.Cardinal.CommandPackage.Commands.ICommand;
 import com.Cardinal.CommandPackage.Exceptions.MissingArgumentsException;
 
+import bot.controller.BotController;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.util.MissingPermissionsException;
 
 public class CrossChat implements ICommand 
 {
+	private BotController botControl;
 
 	@Override
 	public void execute(MessageReceivedEvent event, String[] args)
@@ -17,12 +19,12 @@ public class CrossChat implements ICommand
 		{
 			if (args[1].toLowerCase().equals("katden"))
 			{
-				sendCrossMSG("katden");
+				sendCrossMSG("katden", args);
 			}
 			
 			else if (args[1].toLowerCase().equals("riftfighters"))
 			{
-				sendCrossMSG("riftfighters");
+				sendCrossMSG("riftfighters", args);
 			}
 		}
 
@@ -37,16 +39,18 @@ public class CrossChat implements ICommand
 				+ "\n" + "It vvorks by saying //chans (server) (msg).";
 	}
 	
-	public void sendCrossMSG(String place)
+	public void sendCrossMSG(String place, String[] args)
 	{
+		String temp;
+		temp = args[2];
 		if (place.equals("katden"))
 		{
-			
+			botControl.messageSend("katden", temp);
 		}
 		
 		else if (place.equals("riftfighters"))
 		{
-			
+			botControl.messageSend("riftfighters", temp);
 		}
 	}
 

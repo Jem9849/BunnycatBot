@@ -93,6 +93,11 @@ public class BotController
 			RequestBuffer.request(() -> messageHelp.sendM(content, event));
 	}
 	
+	public void messageSend(String key, String message)
+	{
+		RequestBuffer.request(() -> messageHelp.sendM(key, message));
+	}
+	
 	// Used to print out regular errors. 
 	public void printError(String error)
 	{
