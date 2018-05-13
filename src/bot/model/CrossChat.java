@@ -32,11 +32,13 @@ public class CrossChat implements ICommand
 			if (args[1].toLowerCase().equals("katden"))
 			{
 				sendCrossMSG("katden", args);
+				messageClean(event);
 			}
 			
 			else if (args[1].toLowerCase().equals("riftfighters"))
 			{
 				sendCrossMSG("riftfighters", args);
+				messageClean(event);
 			}
 		}
 
@@ -98,6 +100,14 @@ public class CrossChat implements ICommand
 		}
 		
 		return chantemp;
+	}
+	
+	public void messageClean(MessageReceivedEvent event)
+	{
+		if (event.getMessage().getContent().contains("//chans"))
+		{
+			event.getMessage().delete();
+		}
 	}
 
 	@Override
