@@ -48,7 +48,8 @@ public class CrossChat implements ICommand
 		
 		return "**" + getName().toUpperCase() + "**"
 				+ "\n" + "This command sends a message to another server's channel."
-				+ "\n" + "It vvorks by saying //chans (server) (msg).";
+				+ "\n" + "It vvorks by saying //chans (server) (msg)."
+				+ "\n" + "Right novv there are just riftfighters, and katden for servers.";
 	}
 	
 	public void sendCrossMSG(String place, String[] args)
