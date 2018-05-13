@@ -55,7 +55,12 @@ public class CrossChat implements ICommand
 	public void sendCrossMSG(String place, String[] args)
 	{
 		String temp;
-		temp = args[2];
+		temp = "";
+		for (int count = 2; count < args.length; count++)
+		{
+			temp += args[count] + " ";
+		}
+		
 		if (place.equals("katden"))
 		{
 			botControl.messageSend(grabChannel("Kat Den"), temp);
