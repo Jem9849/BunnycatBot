@@ -14,6 +14,7 @@ import bot.view.SendMessage;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
+import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.util.DiscordException;
 import sx.blah.discord.util.RequestBuffer;
 
@@ -95,9 +96,9 @@ public class BotController
 			RequestBuffer.request(() -> messageHelp.sendM(content, event));
 	}
 	
-	public void messageSend(String key, String message)
+	public void messageSend(IChannel channel, String message)
 	{
-		RequestBuffer.request(() -> messageHelp.sendM(key, message));
+		RequestBuffer.request(() -> messageHelp.sendM(channel, message));
 	}
 	
 	// Used to print out regular errors. 
