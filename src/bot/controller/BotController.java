@@ -6,6 +6,7 @@ import com.Cardinal.CommandPackage.Proccessor.CommandRegistry;
 import bot.model.Reaction;
 import bot.model.RockPaperScissors;
 import bot.model.CSPExplain;
+import bot.model.CrossChat;
 import bot.model.Help;
 import bot.model.Picture;
 import bot.model.updateUsername;
@@ -53,6 +54,7 @@ public class BotController
 			CommandRegistry.current().register(new CSPExplain());
 			CommandRegistry.current().register(new Reaction());
 			CommandRegistry.current().register(new updateUsername());
+			CommandRegistry.current().register(new CrossChat());
 		}
 		// Catches the possibility of there being no command or things going wrong.
 		catch (DiscordException event)
