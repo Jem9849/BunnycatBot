@@ -14,12 +14,14 @@ public class Help implements ICommand
 	private BotController botControl;
 	private Picture pic;
 	private RockPaperScissors rps;
+	private CrossChat chat;
 	
 	public Help()
 	{
 		pic = new Picture();
 		botControl = new BotController();
 		rps = new RockPaperScissors();
+		chat = new CrossChat();
 	}
 
 	@Override
@@ -29,7 +31,9 @@ public class Help implements ICommand
 		{
 				botControl.messageSend(pic.getDescription(), event);
 				botControl.messageSend(rps.getDescription(), event);
+				botControl.messageSend(chat.getDescription(), event);
 				botControl.messageSend(getDescription(), event);
+				
 		}
 
 	}
